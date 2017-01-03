@@ -1,0 +1,364 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5E23601B1E1BCF4800C68F86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E23601A1E1BCF4800C68F86 /* main.m */; };
+		5E23601E1E1BCF4800C68F86 /* SAPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E23601D1E1BCF4800C68F86 /* SAPAppDelegate.m */; };
+		5E2360261E1BCF4800C68F86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E2360251E1BCF4800C68F86 /* Assets.xcassets */; };
+		5E2360291E1BCF4800C68F86 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E2360271E1BCF4800C68F86 /* LaunchScreen.storyboard */; };
+		5E2360391E1BD26200C68F86 /* UIWindow+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2360381E1BD26200C68F86 /* UIWindow+SAPExtensions.m */; };
+		5E2360431E1BD3DE00C68F86 /* SAPChaptersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2360411E1BD3DE00C68F86 /* SAPChaptersViewController.m */; };
+		5E2360441E1BD3DE00C68F86 /* SAPChaptersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E2360421E1BD3DE00C68F86 /* SAPChaptersViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5E2360161E1BCF4800C68F86 /* TestFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E23601A1E1BCF4800C68F86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5E23601C1E1BCF4800C68F86 /* SAPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAPAppDelegate.h; sourceTree = "<group>"; };
+		5E23601D1E1BCF4800C68F86 /* SAPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SAPAppDelegate.m; sourceTree = "<group>"; };
+		5E2360251E1BCF4800C68F86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../TestFirebase/Assets.xcassets; sourceTree = "<group>"; };
+		5E2360281E1BCF4800C68F86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5E23602A1E1BCF4800C68F86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E2360371E1BD26200C68F86 /* UIWindow+SAPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+SAPExtensions.h"; sourceTree = "<group>"; };
+		5E2360381E1BD26200C68F86 /* UIWindow+SAPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+SAPExtensions.m"; sourceTree = "<group>"; };
+		5E2360401E1BD3DE00C68F86 /* SAPChaptersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPChaptersViewController.h; sourceTree = "<group>"; };
+		5E2360411E1BD3DE00C68F86 /* SAPChaptersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPChaptersViewController.m; sourceTree = "<group>"; };
+		5E2360421E1BD3DE00C68F86 /* SAPChaptersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPChaptersViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5E2360131E1BCF4800C68F86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E23600D1E1BCF4800C68F86 = {
+			isa = PBXGroup;
+			children = (
+				5E2360181E1BCF4800C68F86 /* TestFirebase */,
+				5E2360311E1BD16300C68F86 /* Source */,
+				5E2360301E1BD12D00C68F86 /* Resources */,
+				5E2360171E1BCF4800C68F86 /* Products */,
+			);
+			sourceTree = "<group>";
+			tabWidth = 4;
+		};
+		5E2360171E1BCF4800C68F86 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E2360161E1BCF4800C68F86 /* TestFirebase.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E2360181E1BCF4800C68F86 /* TestFirebase */ = {
+			isa = PBXGroup;
+			children = (
+				5E23601C1E1BCF4800C68F86 /* SAPAppDelegate.h */,
+				5E23601D1E1BCF4800C68F86 /* SAPAppDelegate.m */,
+				5E2360271E1BCF4800C68F86 /* LaunchScreen.storyboard */,
+				5E23602A1E1BCF4800C68F86 /* Info.plist */,
+				5E23601A1E1BCF4800C68F86 /* main.m */,
+			);
+			path = TestFirebase;
+			sourceTree = "<group>";
+		};
+		5E2360301E1BD12D00C68F86 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5E2360251E1BCF4800C68F86 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		5E2360311E1BD16300C68F86 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				5E2360321E1BD1A200C68F86 /* UI */,
+				5E2360341E1BD23200C68F86 /* Library */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		5E2360321E1BD1A200C68F86 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5E23603A1E1BD37A00C68F86 /* SAPChaptersViewController */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		5E2360341E1BD23200C68F86 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				5E2360351E1BD23200C68F86 /* Categories */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		5E2360351E1BD23200C68F86 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				5E2360361E1BD26200C68F86 /* UIWindow */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		5E2360361E1BD26200C68F86 /* UIWindow */ = {
+			isa = PBXGroup;
+			children = (
+				5E2360371E1BD26200C68F86 /* UIWindow+SAPExtensions.h */,
+				5E2360381E1BD26200C68F86 /* UIWindow+SAPExtensions.m */,
+			);
+			path = UIWindow;
+			sourceTree = "<group>";
+		};
+		5E23603A1E1BD37A00C68F86 /* SAPChaptersViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5E2360401E1BD3DE00C68F86 /* SAPChaptersViewController.h */,
+				5E2360411E1BD3DE00C68F86 /* SAPChaptersViewController.m */,
+				5E2360421E1BD3DE00C68F86 /* SAPChaptersViewController.xib */,
+			);
+			path = SAPChaptersViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E2360151E1BCF4800C68F86 /* TestFirebase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E23602D1E1BCF4800C68F86 /* Build configuration list for PBXNativeTarget "TestFirebase" */;
+			buildPhases = (
+				5E2360121E1BCF4800C68F86 /* Sources */,
+				5E2360131E1BCF4800C68F86 /* Frameworks */,
+				5E2360141E1BCF4800C68F86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestFirebase;
+			productName = TestFirebase;
+			productReference = 5E2360161E1BCF4800C68F86 /* TestFirebase.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5E23600E1E1BCF4800C68F86 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SAP;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = SAP;
+				TargetAttributes = {
+					5E2360151E1BCF4800C68F86 = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 5E2360111E1BCF4800C68F86 /* Build configuration list for PBXProject "TestFirebase" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5E23600D1E1BCF4800C68F86;
+			productRefGroup = 5E2360171E1BCF4800C68F86 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E2360151E1BCF4800C68F86 /* TestFirebase */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5E2360141E1BCF4800C68F86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E2360291E1BCF4800C68F86 /* LaunchScreen.storyboard in Resources */,
+				5E2360441E1BD3DE00C68F86 /* SAPChaptersViewController.xib in Resources */,
+				5E2360261E1BCF4800C68F86 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E2360121E1BCF4800C68F86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E2360391E1BD26200C68F86 /* UIWindow+SAPExtensions.m in Sources */,
+				5E23601E1E1BCF4800C68F86 /* SAPAppDelegate.m in Sources */,
+				5E23601B1E1BCF4800C68F86 /* main.m in Sources */,
+				5E2360431E1BD3DE00C68F86 /* SAPChaptersViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5E2360271E1BCF4800C68F86 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5E2360281E1BCF4800C68F86 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5E23602B1E1BCF4800C68F86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E23602C1E1BCF4800C68F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5E23602E1E1BCF4800C68F86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TestFirebase/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SAP.TestFirebase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5E23602F1E1BCF4800C68F86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TestFirebase/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SAP.TestFirebase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5E2360111E1BCF4800C68F86 /* Build configuration list for PBXProject "TestFirebase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E23602B1E1BCF4800C68F86 /* Debug */,
+				5E23602C1E1BCF4800C68F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E23602D1E1BCF4800C68F86 /* Build configuration list for PBXNativeTarget "TestFirebase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E23602E1E1BCF4800C68F86 /* Debug */,
+				5E23602F1E1BCF4800C68F86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5E23600E1E1BCF4800C68F86 /* Project object */;
+}
