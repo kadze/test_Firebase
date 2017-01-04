@@ -14,6 +14,8 @@
 #import "SAPChapterViewController.h"
 #import "SAPChapterCell.h"
 
+#import "SAPConstants.h"
+
 static NSString * const kSAPTitle = @"Metra";
 
 @interface SAPChaptersViewController () <UITableViewDataSource, UITabBarDelegate>
@@ -30,7 +32,7 @@ static NSString * const kSAPTitle = @"Metra";
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    [[self.databaseReference child:@"chapters"] removeObserverWithHandle:self.addChapterHandle];
+    [[self.databaseReference child:kSAPChapters] removeObserverWithHandle:self.addChapterHandle];
 }
 
 #pragma mark -
@@ -90,7 +92,7 @@ static NSString * const kSAPTitle = @"Metra";
 
 - (void)configureDatabase {
     self.databaseReference = [[FIRDatabase database] reference];
-    self.addChapterHandle = [[self.databaseReference child:@"chapters"] observeEventType:FIRDataEventTypeChildAdded
+    self.addChapterHandle = [[self.databaseReference child:kSAPChapters] observeEventType:FIRDataEventTypeChildAdded
                                                              withBlock:^(FIRDataSnapshot *snapshot) {
         [self.chapters addObject:[SAPChapter chapterWithSnapshot:snapshot]];
         [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.chapters.count - 1 inSection:0]]

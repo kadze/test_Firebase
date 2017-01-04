@@ -14,6 +14,7 @@
 #import "SAPChapterView.h"
 
 #import "SAPViewControllerMacro.h"
+#import "SAPConstants.h"
 
 static NSString * const kSAPTitle = @"Add";
 
@@ -45,7 +46,7 @@ SAPViewControllerBaseViewProperty(SAPChapterViewController, SAPChapterView, main
     chapter.chapterDescription = view.descriptionTextView.text;
     
     FIRDatabaseReference *databaseReference = [[FIRDatabase database] reference];
-    [[[databaseReference child:@"chapters"] childByAutoId] setValue:[chapter dictionary]];
+    [[[databaseReference child:kSAPChapters] childByAutoId] setValue:[chapter dictionary]];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
