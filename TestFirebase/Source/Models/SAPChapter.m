@@ -32,6 +32,10 @@
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
+- (void)dealloc {
+     [[self.reference child:kSAPImages] removeObserverWithHandle:self.addImageHandle];
+}
+
 - (instancetype)initWithSnapshot:(FIRDataSnapshot *)snapshot {
     self = [super init];
     if (!self) {
