@@ -10,6 +10,8 @@
 
 #import <FirebaseDatabase/FirebaseDatabase.h>
 
+#import "SAPConstants.h"
+
 @implementation SAPChapter
 
 #pragma mark -
@@ -28,6 +30,8 @@
         return nil;
     }
     
+    self.uid = snapshot.key;
+    self.reference = snapshot.ref;
     NSDictionary<NSString *, NSString *> *chapterDictionary = snapshot.value;
     self.name = chapterDictionary[@"name"];
     self.chapterDescription = chapterDictionary[@"description"];
@@ -40,8 +44,12 @@
 
 - (NSDictionary *)dictionary {
     return @{@"name" : self.name,
-             @"description" : self.chapterDescription,
-             @"lastImageDate" : @""};
+             @"description" : self.chapterDescription};
+}
+
+- (void)addToDatabase {
+    FIRDatabaseReference *databaseReference = [[FIRDatabase database] reference];
+    [[[databaseReference child:kSAPChapters] childByAutoId] setValue:[self dictionary]];
 }
 
 @end

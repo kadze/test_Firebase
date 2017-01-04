@@ -8,6 +8,12 @@
 
 #import "SAPChapterImagesViewController.h"
 
+#import <Photos/Photos.h>
+#import <FirebaseCore/FirebaseCore.h>
+#import <FirebaseStorage/FirebaseStorage.h>
+
+#import "SAPImage.h"
+
 @interface SAPChapterImagesViewController ()
 <
     UIPopoverPresentationControllerDelegate,
@@ -16,6 +22,7 @@
 >
 
 @property (nonatomic, strong) UIBarButtonItem *addImageButton;
+@property (nonatomic, strong) FIRStorageReference *storageReference;
 
 @end
 
@@ -30,6 +37,7 @@
     self.title = self.chapter.name;
     
     [self setupNavigationItem];
+    [self configureStorage];
 }
 
 #pragma mark -
@@ -53,7 +61,63 @@
 #pragma mark -
 #pragma mark UIImagePickerControllerDelegate
 
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    NSURL *referenceURL = info[UIImagePickerControllerReferenceURL];
+    // if it's a photo from the library, not an image from the camera
+    if (referenceURL) {
+        PHFetchResult* assets = [PHAsset fetchAssetsWithALAssetURLs:@[referenceURL] options:nil];
+        PHAsset *asset = [assets firstObject];
+        [asset requestContentEditingInputWithOptions:nil
+                                   completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
+                                       NSURL *imageFile = contentEditingInput.fullSizeImageURL;
+                                       NSString *filePath = [NSString stringWithFormat:@"%lld/%@",
+                                                             (long long)([[NSDate date] timeIntervalSince1970] * 1000.0),
+                                                             [referenceURL lastPathComponent]];
+                                       [[self.storageReference child:filePath] putFile:imageFile
+                                                                              metadata:nil
+                                                                            completion:^(FIRStorageMetadata *metadata, NSError *error)
+                                       {
+                                           if (error) {
+                                               NSLog(@"Error uploading: %@", error);
+                                               
+                                               return;
+                                           }
+                                           
+                                           SAPImage *image = [SAPImage new];
+                                           image.chapterReference = self.chapter.reference;
+                                           image.name = [referenceURL lastPathComponent];
+                                           image.date = @"";
+                                           image.imageURL = [self.storageReference child:metadata.path].description;
+                                           [image addToDatabase];
+                                       }];
+                                   }];
+    } else {
+//        UIImage *image = info[UIImagePickerControllerOriginalImage];
+//        NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
+//        NSString *imagePath =
+//        [NSString stringWithFormat:@"%@/%lld.jpg",
+//         [FIRAuth auth].currentUser.uid,
+//         (long long)([[NSDate date] timeIntervalSince1970] * 1000.0)];
+//        FIRStorageMetadata *metadata = [FIRStorageMetadata new];
+//        metadata.contentType = @"image/jpeg";
+//        [[_storageRef child:imagePath] putData:imageData metadata:metadata
+//                                    completion:^(FIRStorageMetadata * _Nullable metadata, NSError * _Nullable error) {
+//                                        if (error) {
+//                                            NSLog(@"Error uploading: %@", error);
+//                                            return;
+//                                        }
+//                                        [self sendMessage:@{MessageFieldsimageURL:[_storageRef child:metadata.path].description}];
+//                                    }];
+    }
+}
 
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
 
 #pragma mark -
 #pragma mark Private
@@ -64,6 +128,11 @@
                                                                                     action:@selector(onAddImage)];
     self.addImageButton = addImageButton;
     self.navigationItem.rightBarButtonItem = addImageButton;
+}
+
+- (void)configureStorage {
+    NSString *storageUrl = [FIRApp defaultApp].options.storageBucket;
+    self.storageReference = [[FIRStorage storage] referenceForURL:[NSString stringWithFormat:@"gs://%@", storageUrl]];
 }
 
 - (void)onAddImage {
