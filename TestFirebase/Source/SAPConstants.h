@@ -7,4 +7,4 @@
 //
 
 static NSString * const kSAPChapters = @"chapters";
-
+static NSString * const kSAPImages = @"images";

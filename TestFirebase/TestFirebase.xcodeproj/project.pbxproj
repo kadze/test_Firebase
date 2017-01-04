@@ -28,6 +28,7 @@
 		5E4A2ED71E1D242300401B62 /* SAPChapterImagesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2ED61E1D242300401B62 /* SAPChapterImagesView.m */; };
 		5E4A2EDF1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2EDD1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.m */; };
 		5E4A2EE01E1D2EA000401B62 /* SAPImageSelectionMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E4A2EDE1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.xib */; };
+		5E4A2EE31E1D6E5B00401B62 /* SAPImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2EE21E1D6E5B00401B62 /* SAPImage.m */; };
 		ADA2B0F2641DB720CF7AF0CD /* libPods-TestFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6E7E2A5110C5B151CDB460 /* libPods-TestFirebase.a */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,8 @@
 		5E4A2EDC1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPImageSelectionMenuViewController.h; sourceTree = "<group>"; };
 		5E4A2EDD1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPImageSelectionMenuViewController.m; sourceTree = "<group>"; };
 		5E4A2EDE1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPImageSelectionMenuViewController.xib; sourceTree = "<group>"; };
+		5E4A2EE11E1D6E5B00401B62 /* SAPImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPImage.h; sourceTree = "<group>"; };
+		5E4A2EE21E1D6E5B00401B62 /* SAPImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPImage.m; sourceTree = "<group>"; };
 		B2DC07015325CA295AEF1A41 /* Pods-TestFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestFirebase/Pods-TestFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		B36279B8CDC10B41D70FE15E /* Pods-TestFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestFirebase/Pods-TestFirebase.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,6 +223,8 @@
 			children = (
 				5E4A2EAA1E1CD2D500401B62 /* SAPChapter.h */,
 				5E4A2EAB1E1CD2D500401B62 /* SAPChapter.m */,
+				5E4A2EE11E1D6E5B00401B62 /* SAPImage.h */,
+				5E4A2EE21E1D6E5B00401B62 /* SAPImage.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4A2EE31E1D6E5B00401B62 /* SAPImage.m in Sources */,
 				5E2360391E1BD26200C68F86 /* UIWindow+SAPExtensions.m in Sources */,
 				5E4A2EAF1E1CD8F400401B62 /* SAPChapterView.m in Sources */,
 				5E4A2EA71E1CD23200401B62 /* SAPChapterViewController.m in Sources */,
