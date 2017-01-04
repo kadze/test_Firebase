@@ -43,25 +43,11 @@
 #pragma mark SAPImageSelectionMenuViewControllerDelegate
 
 - (void)imageSelectionMenuController:(SAPImageSelectionMenuViewController *)controller onChoosePhoto:(UIButton *)button {
-//    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
-//    picker.delegate = self;
-//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
-//        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//        [self dismissViewControllerAnimated:NO completion:^{
-//            [self presentViewController:picker animated:YES completion:NULL];
-//        }];
-//    }
+    [self presentImagePickerForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
 }
 
 - (void)imageSelectionMenuController:(SAPImageSelectionMenuViewController *)controller onMakePhoto:(UIButton *)button {
-//    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
-//    picker.delegate = self;
-//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-//        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//        [self dismissViewControllerAnimated:NO completion:^{
-//            [self presentViewController:picker animated:YES completion:NULL];
-//        }];
-//    }
+    [self presentImagePickerForSourceType:UIImagePickerControllerSourceTypeCamera];
 }
 
 #pragma mark -
@@ -87,6 +73,19 @@
     menuController.popoverPresentationController.delegate = self;
     menuController.popoverPresentationController.barButtonItem = self.addImageButton;
     [self presentViewController:menuController animated:YES completion:nil];
+}
+
+- (void)presentImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType {
+    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
+        picker.sourceType = sourceType;
+        [self dismissViewControllerAnimated:NO completion:^{
+            [self presentViewController:picker animated:YES completion:NULL];
+        }];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end
