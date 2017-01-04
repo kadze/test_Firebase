@@ -11,6 +11,14 @@
 #import <FirebaseDatabase/FirebaseDatabase.h>
 
 #import "SAPConstants.h"
+#import "SAPImage.h"
+
+@interface SAPChapter ()
+//@property (nonatomic, strong) FIRDatabaseReference *databaseReference;
+@property (nonatomic, assign) FIRDatabaseHandle addImageHandle;
+@property (nonatomic, strong) NSMutableArray<SAPImage *> *images;
+
+@end
 
 @implementation SAPChapter
 
@@ -30,11 +38,14 @@
         return nil;
     }
     
+    self.images = [NSMutableArray new];
     self.uid = snapshot.key;
     self.reference = snapshot.ref;
     NSDictionary<NSString *, NSString *> *chapterDictionary = snapshot.value;
     self.name = chapterDictionary[@"name"];
     self.chapterDescription = chapterDictionary[@"description"];
+    
+    [self setupAddImageHandle];
     
     return self;
 }
@@ -50,6 +61,14 @@
 - (void)addToDatabase {
     FIRDatabaseReference *databaseReference = [[FIRDatabase database] reference];
     [[[databaseReference child:kSAPChapters] childByAutoId] setValue:[self dictionary]];
+}
+
+- (void)setupAddImageHandle {
+    self.addImageHandle = [[self.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildAdded
+                                                                    withBlock:^(FIRDataSnapshot *snapshot)
+                           {
+                               [self.images addObject:[SAPImage imageWithSnapshot:snapshot]];
+                           }];
 }
 
 @end
