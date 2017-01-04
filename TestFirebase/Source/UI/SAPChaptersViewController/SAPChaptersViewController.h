@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SAPChaptersViewController : UIViewController
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @end

@@ -8,12 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@class FIRDataSnapshot;
+
 @interface SAPChapter : NSObject
 @property (nonatomic, readonly) NSInteger imagesCount;
 
 @property (nonatomic, readonly) NSDate *last;
 
 @property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *chapterDescription;
+
++ (instancetype)chapterWithSnapshot:(FIRDataSnapshot *)snapshot;
 
 @end
