@@ -8,6 +8,9 @@
 
 #import "SAPChaptersViewController.h"
 
+#import "SAPChapter.h"
+#import "SAPChapterViewController.h"
+
 static NSString * const kSAPTitle = @"Metra";
 
 @interface SAPChaptersViewController ()
@@ -29,7 +32,10 @@ static NSString * const kSAPTitle = @"Metra";
 #pragma mark Actions
 
 - (void)addChapter {
-    
+    SAPChapter *chapter = [SAPChapter new];
+    SAPChapterViewController *chapterController = [SAPChapterViewController new];
+    chapterController.chapter = chapter;
+    [self.navigationController pushViewController:chapterController animated:YES];
 }
 
 #pragma mark -

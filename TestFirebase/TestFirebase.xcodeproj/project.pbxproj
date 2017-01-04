@@ -14,9 +14,16 @@
 		5E2360391E1BD26200C68F86 /* UIWindow+SAPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2360381E1BD26200C68F86 /* UIWindow+SAPExtensions.m */; };
 		5E2360431E1BD3DE00C68F86 /* SAPChaptersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E2360411E1BD3DE00C68F86 /* SAPChaptersViewController.m */; };
 		5E2360441E1BD3DE00C68F86 /* SAPChaptersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E2360421E1BD3DE00C68F86 /* SAPChaptersViewController.xib */; };
+		5E2360461E1BDC5200C68F86 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E2360451E1BDC5200C68F86 /* GoogleService-Info.plist */; };
+		5E4A2EA71E1CD23200401B62 /* SAPChapterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2EA51E1CD23200401B62 /* SAPChapterViewController.m */; };
+		5E4A2EA81E1CD23200401B62 /* SAPChapterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E4A2EA61E1CD23200401B62 /* SAPChapterViewController.xib */; };
+		5E4A2EAC1E1CD2D500401B62 /* SAPChapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2EAB1E1CD2D500401B62 /* SAPChapter.m */; };
+		5E4A2EAF1E1CD8F400401B62 /* SAPChapterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2EAE1E1CD8F400401B62 /* SAPChapterView.m */; };
+		ADA2B0F2641DB720CF7AF0CD /* libPods-TestFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6E7E2A5110C5B151CDB460 /* libPods-TestFirebase.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D6E7E2A5110C5B151CDB460 /* libPods-TestFirebase.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TestFirebase.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E2360161E1BCF4800C68F86 /* TestFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E23601A1E1BCF4800C68F86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5E23601C1E1BCF4800C68F86 /* SAPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SAPAppDelegate.h; sourceTree = "<group>"; };
@@ -29,6 +36,16 @@
 		5E2360401E1BD3DE00C68F86 /* SAPChaptersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPChaptersViewController.h; sourceTree = "<group>"; };
 		5E2360411E1BD3DE00C68F86 /* SAPChaptersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPChaptersViewController.m; sourceTree = "<group>"; };
 		5E2360421E1BD3DE00C68F86 /* SAPChaptersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPChaptersViewController.xib; sourceTree = "<group>"; };
+		5E2360451E1BDC5200C68F86 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5E4A2EA41E1CD23200401B62 /* SAPChapterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPChapterViewController.h; sourceTree = "<group>"; };
+		5E4A2EA51E1CD23200401B62 /* SAPChapterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPChapterViewController.m; sourceTree = "<group>"; };
+		5E4A2EA61E1CD23200401B62 /* SAPChapterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPChapterViewController.xib; sourceTree = "<group>"; };
+		5E4A2EAA1E1CD2D500401B62 /* SAPChapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPChapter.h; sourceTree = "<group>"; };
+		5E4A2EAB1E1CD2D500401B62 /* SAPChapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPChapter.m; sourceTree = "<group>"; };
+		5E4A2EAD1E1CD8F400401B62 /* SAPChapterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPChapterView.h; sourceTree = "<group>"; };
+		5E4A2EAE1E1CD8F400401B62 /* SAPChapterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPChapterView.m; sourceTree = "<group>"; };
+		B2DC07015325CA295AEF1A41 /* Pods-TestFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestFirebase/Pods-TestFirebase.debug.xcconfig"; sourceTree = "<group>"; };
+		B36279B8CDC10B41D70FE15E /* Pods-TestFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestFirebase/Pods-TestFirebase.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,12 +53,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADA2B0F2641DB720CF7AF0CD /* libPods-TestFirebase.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28C24466BA4DE8F361D52F4A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B2DC07015325CA295AEF1A41 /* Pods-TestFirebase.debug.xcconfig */,
+				B36279B8CDC10B41D70FE15E /* Pods-TestFirebase.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5E23600D1E1BCF4800C68F86 = {
 			isa = PBXGroup;
 			children = (
@@ -49,6 +76,8 @@
 				5E2360311E1BD16300C68F86 /* Source */,
 				5E2360301E1BD12D00C68F86 /* Resources */,
 				5E2360171E1BCF4800C68F86 /* Products */,
+				28C24466BA4DE8F361D52F4A /* Pods */,
+				7CC7FFB3586147296808AD1B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			tabWidth = 4;
@@ -68,6 +97,7 @@
 				5E23601D1E1BCF4800C68F86 /* SAPAppDelegate.m */,
 				5E2360271E1BCF4800C68F86 /* LaunchScreen.storyboard */,
 				5E23602A1E1BCF4800C68F86 /* Info.plist */,
+				5E2360451E1BDC5200C68F86 /* GoogleService-Info.plist */,
 				5E23601A1E1BCF4800C68F86 /* main.m */,
 			);
 			path = TestFirebase;
@@ -86,6 +116,7 @@
 			children = (
 				5E2360321E1BD1A200C68F86 /* UI */,
 				5E2360341E1BD23200C68F86 /* Library */,
+				5E4A2EA91E1CD2A700401B62 /* Models */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -94,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				5E23603A1E1BD37A00C68F86 /* SAPChaptersViewController */,
+				5E4A2EA31E1CD21400401B62 /* SAPChapterViewController */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -133,6 +165,35 @@
 			path = SAPChaptersViewController;
 			sourceTree = "<group>";
 		};
+		5E4A2EA31E1CD21400401B62 /* SAPChapterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5E4A2EA41E1CD23200401B62 /* SAPChapterViewController.h */,
+				5E4A2EA51E1CD23200401B62 /* SAPChapterViewController.m */,
+				5E4A2EA61E1CD23200401B62 /* SAPChapterViewController.xib */,
+				5E4A2EAD1E1CD8F400401B62 /* SAPChapterView.h */,
+				5E4A2EAE1E1CD8F400401B62 /* SAPChapterView.m */,
+			);
+			path = SAPChapterViewController;
+			sourceTree = "<group>";
+		};
+		5E4A2EA91E1CD2A700401B62 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5E4A2EAA1E1CD2D500401B62 /* SAPChapter.h */,
+				5E4A2EAB1E1CD2D500401B62 /* SAPChapter.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7CC7FFB3586147296808AD1B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D6E7E2A5110C5B151CDB460 /* libPods-TestFirebase.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,9 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E23602D1E1BCF4800C68F86 /* Build configuration list for PBXNativeTarget "TestFirebase" */;
 			buildPhases = (
+				1721AFED529687D0EF457A4C /* [CP] Check Pods Manifest.lock */,
 				5E2360121E1BCF4800C68F86 /* Sources */,
 				5E2360131E1BCF4800C68F86 /* Frameworks */,
 				5E2360141E1BCF4800C68F86 /* Resources */,
+				90170BB51D901923C1BA3CDA /* [CP] Embed Pods Frameworks */,
+				9230C1727866574F698531A4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,7 +256,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4A2EA81E1CD23200401B62 /* SAPChapterViewController.xib in Resources */,
 				5E2360291E1BCF4800C68F86 /* LaunchScreen.storyboard in Resources */,
+				5E2360461E1BDC5200C68F86 /* GoogleService-Info.plist in Resources */,
 				5E2360441E1BD3DE00C68F86 /* SAPChaptersViewController.xib in Resources */,
 				5E2360261E1BCF4800C68F86 /* Assets.xcassets in Resources */,
 			);
@@ -200,14 +266,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1721AFED529687D0EF457A4C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		90170BB51D901923C1BA3CDA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestFirebase/Pods-TestFirebase-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9230C1727866574F698531A4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestFirebase/Pods-TestFirebase-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5E2360121E1BCF4800C68F86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5E2360391E1BD26200C68F86 /* UIWindow+SAPExtensions.m in Sources */,
+				5E4A2EAF1E1CD8F400401B62 /* SAPChapterView.m in Sources */,
+				5E4A2EA71E1CD23200401B62 /* SAPChapterViewController.m in Sources */,
 				5E23601E1E1BCF4800C68F86 /* SAPAppDelegate.m in Sources */,
 				5E23601B1E1BCF4800C68F86 /* main.m in Sources */,
+				5E4A2EAC1E1CD2D500401B62 /* SAPChapter.m in Sources */,
 				5E2360431E1BD3DE00C68F86 /* SAPChaptersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +435,7 @@
 		};
 		5E23602E1E1BCF4800C68F86 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2DC07015325CA295AEF1A41 /* Pods-TestFirebase.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TestFirebase/Info.plist;
@@ -329,6 +447,7 @@
 		};
 		5E23602F1E1BCF4800C68F86 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B36279B8CDC10B41D70FE15E /* Pods-TestFirebase.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TestFirebase/Info.plist;
@@ -357,6 +476,7 @@
 				5E23602F1E1BCF4800C68F86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
