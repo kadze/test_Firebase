@@ -13,6 +13,7 @@
 #import "SAPChapter.h"
 #import "SAPChapterViewController.h"
 #import "SAPChapterCell.h"
+#import "SAPChapterImagesViewController.h"
 
 #import "SAPConstants.h"
 
@@ -70,7 +71,11 @@ static NSString * const kSAPTitle = @"Metra";
 #pragma mark -
 #pragma mark UITableViewDelegate
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    SAPChapterImagesViewController *imagesController = [SAPChapterImagesViewController new];
+    imagesController.chapter = self.chapters[indexPath.row];
+    [self.navigationController pushViewController:imagesController animated:YES];
+}
 
 #pragma mark -
 #pragma mark Actions
