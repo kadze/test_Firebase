@@ -13,11 +13,13 @@
 @interface SAPChapter : NSObject
 @property (nonatomic, readonly) NSInteger imagesCount;
 
-@property (nonatomic, readonly) NSDate *last;
+@property (nonatomic, copy, readonly) NSString *lastImageDate;
 
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *chapterDescription;
 
 + (instancetype)chapterWithSnapshot:(FIRDataSnapshot *)snapshot;
+
+- (NSDictionary *)dictionary;
 
 @end

@@ -64,6 +64,10 @@
                 <constraint firstItem="Uxl-2Y-57e" firstAttribute="baseline" secondItem="zpf-wd-iLE" secondAttribute="baseline" id="fbZ-kU-89P"/>
                 <constraint firstItem="Uxl-2Y-57e" firstAttribute="leading" secondItem="zpf-wd-iLE" secondAttribute="trailing" constant="8" symbolic="YES" id="wgZ-bM-9M3"/>
             </constraints>
+            <connections>
+                <outlet property="descriptionTextView" destination="UYj-2w-tlj" id="QBt-7r-0Ue"/>
+                <outlet property="nameTextField" destination="Uxl-2Y-57e" id="uZO-Lx-gT5"/>
+            </connections>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
     </objects>

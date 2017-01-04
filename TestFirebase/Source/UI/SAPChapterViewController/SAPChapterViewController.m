@@ -8,7 +8,16 @@
 
 #import "SAPChapterViewController.h"
 
+#import <FirebaseDatabase/FirebaseDatabase.h>
+
+#import "SAPChapter.h"
+#import "SAPChapterView.h"
+
+#import "SAPViewControllerMacro.h"
+
 static NSString * const kSAPTitle = @"Add";
+
+SAPViewControllerBaseViewProperty(SAPChapterViewController, SAPChapterView, mainView);
 
 @interface SAPChapterViewController ()
 
@@ -30,7 +39,15 @@ static NSString * const kSAPTitle = @"Add";
 #pragma mark Actions
 
 - (void)save {
+    SAPChapter *chapter = self.model;
+    SAPChapterView *view = self.mainView;
+    chapter.name = view.nameTextField.text;
+    chapter.chapterDescription = view.descriptionTextView.text;
     
+    FIRDatabaseReference *databaseReference = [[FIRDatabase database] reference];
+    [[[databaseReference child:@"chapters"] childByAutoId] setValue:[chapter dictionary]];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark -

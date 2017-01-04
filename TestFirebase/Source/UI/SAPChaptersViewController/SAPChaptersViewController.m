@@ -74,9 +74,8 @@ static NSString * const kSAPTitle = @"Metra";
 #pragma mark Actions
 
 - (void)addChapter {
-    SAPChapter *chapter = [SAPChapter new];
     SAPChapterViewController *chapterController = [SAPChapterViewController new];
-    chapterController.chapter = chapter;
+    chapterController.model = [SAPChapter new];
     [self.navigationController pushViewController:chapterController animated:YES];
 }
 

@@ -35,4 +35,13 @@
     return self;
 }
 
+#pragma mark -
+#pragma mark Public
+
+- (NSDictionary *)dictionary {
+    return @{@"name" : self.name,
+             @"description" : self.chapterDescription,
+             @"lastImageDate" : @""};
+}
+
 @end

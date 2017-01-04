@@ -22,7 +22,7 @@
 
 - (void)fillWithModel {
     self.nameLabel.text = self.model.name;
-    self.lastDateLabel.text = self.model.last.description;/// remake with viewmodel
+    self.lastDateLabel.text = self.model.lastImageDate.description;/// remake with viewmodel
 }
 
 @end

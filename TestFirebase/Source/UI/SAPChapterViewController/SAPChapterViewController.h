@@ -11,6 +11,6 @@
 @class SAPChapter;
 
 @interface SAPChapterViewController : UIViewController
-@property (nonatomic, strong) SAPChapter *chapter;
+@property (nonatomic, strong) SAPChapter *model;
 
 @end
