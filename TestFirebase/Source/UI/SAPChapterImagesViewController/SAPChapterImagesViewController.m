@@ -11,8 +11,15 @@
 #import <Photos/Photos.h>
 #import <FirebaseCore/FirebaseCore.h>
 #import <FirebaseStorage/FirebaseStorage.h>
+#import <FirebaseDatabase/FirebaseDatabase.h>
 
 #import "SAPImage.h"
+#import "SAPChapterImagesView.h"
+
+#import "SAPViewControllerMacro.h"
+#import "SAPConstants.h"
+
+SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImagesView, mainView);
 
 @interface SAPChapterImagesViewController ()
 <
@@ -21,12 +28,22 @@
     UIImagePickerControllerDelegate
 >
 
+@property (nonatomic, assign) FIRDatabaseHandle addImageHandle;
+
 @property (nonatomic, strong) UIBarButtonItem *addImageButton;
 @property (nonatomic, strong) FIRStorageReference *storageReference;
+
 
 @end
 
 @implementation SAPChapterImagesViewController
+
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    [[self.chapter.reference child:kSAPImages] removeObserverWithHandle:self.addImageHandle];
+}
 
 #pragma mark -
 #pragma mark View Lifecycle
@@ -38,6 +55,7 @@
     
     [self setupNavigationItem];
     [self configureStorage];
+    [self setupAddImageHandle];
 }
 
 #pragma mark -
@@ -133,6 +151,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)configureStorage {
     NSString *storageUrl = [FIRApp defaultApp].options.storageBucket;
     self.storageReference = [[FIRStorage storage] referenceForURL:[NSString stringWithFormat:@"gs://%@", storageUrl]];
+}
+
+- (void)setupAddImageHandle {
+    self.addImageHandle = [[self.chapter.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildAdded
+                                                                    withBlock:^(FIRDataSnapshot *snapshot)
+                           {
+                               [self.mainView.collectionView reloadData];
+                           }];
 }
 
 - (void)onAddImage {
