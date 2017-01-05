@@ -54,7 +54,7 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
     
     [self setupNavigationItem];
     [self setupCollectionView];
-    [self setupAddImageHandle];
+    [self setupImageHandles];
 }
 
 #pragma mark -
@@ -153,7 +153,7 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
     flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth);
 }
 
-- (void)setupAddImageHandle {
+- (void)setupImageHandles {
     self.addImageHandle = [[self.chapter.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildAdded
                                                                     withBlock:^(FIRDataSnapshot *snapshot)
                            {
