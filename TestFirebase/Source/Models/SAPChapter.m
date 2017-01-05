@@ -10,8 +10,10 @@
 
 #import <FirebaseDatabase/FirebaseDatabase.h>
 
-#import "SAPConstants.h"
 #import "SAPImage.h"
+
+#import "SAPConstants.h"
+#import "SAPOwnershipMacro.h"
 
 @interface SAPChapter ()
 @property (nonatomic, assign) FIRDatabaseHandle addImageHandle;
@@ -77,9 +79,11 @@
 }
 
 - (void)setupImageHandles {
+    SAPWeakify(self);
     self.addImageHandle = [[self.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildAdded
                                                                     withBlock:^(FIRDataSnapshot *snapshot)
                            {
+                               SAPStrongify(self);
                                SAPImage *image = [SAPImage modelWithSnapshot:snapshot];
                                [self.mutableImages addObject:image];
                                self.lastImageDate = image.date;
@@ -90,6 +94,7 @@
     self.removeImageHandle = [[self.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildRemoved
                                                                        withBlock:^(FIRDataSnapshot *snapshot)
                               {
+                                  SAPStrongify(self);
                                   [self.mutableImages removeObject:[SAPImage modelWithSnapshot:snapshot]];
                                   SAPImage *lastImage = self.images.lastObject;
                                   self.lastImageDate = lastImage.date;

@@ -8,10 +8,6 @@
 
 #import "SAPImageSelectionMenuViewController.h"
 
-@interface SAPImageSelectionMenuViewController ()
-
-@end
-
 @implementation SAPImageSelectionMenuViewController
 
 #pragma mark -

@@ -16,6 +16,7 @@
 #import "SAPChapterCell.h"
 
 #import "SAPConstants.h"
+#import "SAPOwnershipMacro.h"
 
 static CGFloat const kSAPRowHeight = 66.0;
 
@@ -49,20 +50,6 @@ static CGFloat const kSAPRowHeight = 66.0;
 }
 
 #pragma mark -
-#pragma mark Private
-
-- (void)configureDatabase {
-    self.databaseReference = [[FIRDatabase database] reference];
-    self.addChapterHandle = [[self.databaseReference child:kSAPChapters] observeEventType:FIRDataEventTypeChildAdded
-                                                                                withBlock:^(FIRDataSnapshot *snapshot)
-                             {
-                                 [self.chapters addObject:[SAPChapter modelWithSnapshot:snapshot]];
-                                 [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.chapters.count - 1 inSection:0]]
-                                                       withRowAnimation: UITableViewRowAnimationAutomatic];
-                             }];
-}
-
-#pragma mark -
 #pragma mark Public
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section {
@@ -84,6 +71,22 @@ static CGFloat const kSAPRowHeight = 66.0;
 
 - (SAPChapter *)chapterForIndexPath:(NSIndexPath *)indexPath {
     return self.chapters[indexPath.row];
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (void)configureDatabase {
+    self.databaseReference = [[FIRDatabase database] reference];
+    SAPWeakify(self);
+    self.addChapterHandle = [[self.databaseReference child:kSAPChapters] observeEventType:FIRDataEventTypeChildAdded
+                                                                                withBlock:^(FIRDataSnapshot *snapshot)
+                             {
+                                 SAPStrongify(self);
+                                 [self.chapters addObject:[SAPChapter modelWithSnapshot:snapshot]];
+                                 [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.chapters.count - 1 inSection:0]]
+                                                       withRowAnimation: UITableViewRowAnimationAutomatic];
+                             }];
 }
 
 @end

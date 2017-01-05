@@ -20,6 +20,7 @@
 
 #import "SAPViewControllerMacro.h"
 #import "SAPConstants.h"
+#import "SAPOwnershipMacro.h"
 
 SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImagesView, mainView);
 
@@ -158,7 +159,9 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
     picker.delegate = self;
     if ([UIImagePickerController isSourceTypeAvailable:sourceType]) {
         picker.sourceType = sourceType;
+        SAPWeakify(self);
         [self dismissViewControllerAnimated:NO completion:^{
+            SAPStrongify(self);
             [self presentViewController:picker animated:YES completion:NULL];
         }];
     } else {

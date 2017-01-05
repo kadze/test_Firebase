@@ -16,12 +16,12 @@
 
 #import "SAPConstants.h"
 #import "SAPDispatchOnceMacro.h"
+#import "SAPOwnershipMacro.h"
 
 static FIRStorageReference *storageReference = nil;
 
 @interface SAPImage ()
 @property (nonatomic, strong) NSURL                 *referenceURL;
-//@property (nonatomic, strong) FIRStorageReference   *storageReference;
 
 @end
 
@@ -136,7 +136,9 @@ static FIRStorageReference *storageReference = nil;
 }
 
 - (void)removeFromDatabase {
+    SAPWeakify(self);
     [[[FIRStorage storage] referenceForURL:self.imageURL] deleteWithCompletion:^(NSError * _Nullable error) {
+        SAPStrongify(self);
         [self.reference removeValue];
     }];
 }
@@ -145,9 +147,11 @@ static FIRStorageReference *storageReference = nil;
     NSString *imageURL = _imageURL;
     if (imageURL) {
         if ([imageURL hasPrefix:@"gs://"]) {
+            SAPWeakify(self);
             [[[FIRStorage storage] referenceForURL:imageURL] dataWithMaxSize:INT64_MAX
                                                                   completion:^(NSData *data, NSError *error)
              {
+                 SAPStrongify(self);
                  if (error) {
                      NSLog(@"Error downloading: %@", error);
                      return;

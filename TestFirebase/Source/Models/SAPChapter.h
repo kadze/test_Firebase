@@ -17,6 +17,7 @@
 @class SAPChapter;
 
 @protocol SAPChapterDelegate <NSObject>
+
 - (void)chapterDidCnahge:(SAPChapter *)chapter;
 
 @end

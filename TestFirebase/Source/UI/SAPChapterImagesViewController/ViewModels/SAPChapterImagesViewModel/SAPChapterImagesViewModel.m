@@ -14,6 +14,7 @@
 #import "SAPImageCell.h"
 
 #import "SAPConstants.h"
+#import "SAPOwnershipMacro.h"
 
 @interface SAPChapterImagesViewModel ()
 @property (nonatomic, assign) FIRDatabaseHandle addImageHandle;
@@ -90,9 +91,11 @@
 #pragma mark Private
 
 - (void)setupImageHandles {
+    SAPWeakify(self);
     self.addImageHandle = [[self.chapter.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildAdded
                                                                             withBlock:^(FIRDataSnapshot *snapshot)
                            {
+                               SAPStrongify(self);
                                [self.collectionView reloadData];
                                [self.delegate viewModelDidChange:self];
                            }];
@@ -100,6 +103,7 @@
     self.removeImageHandle = [[self.chapter.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildRemoved
                                                                                withBlock:^(FIRDataSnapshot *snapshot)
                               {
+                                  SAPStrongify(self);
                                   [self.collectionView reloadData];
                                   [self.delegate viewModelDidChange:self];
                               }];
