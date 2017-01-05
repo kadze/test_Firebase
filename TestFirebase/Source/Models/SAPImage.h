@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SAPModel.h"
+
 @class FIRDataSnapshot;
 @class FIRDatabaseReference;
 @class UIImage;
@@ -20,9 +22,8 @@
 
 @end
 
-@interface SAPImage : NSObject
+@interface SAPImage : SAPModel
 
-@property (nonatomic, strong) FIRDatabaseReference  *reference;
 @property (nonatomic, strong) FIRDatabaseReference  *chapterReference;
 @property (nonatomic, copy) NSString                *uid;
 @property (nonatomic, copy) NSString                *name;
@@ -32,12 +33,9 @@
 
 @property (nonatomic, weak) id<SAPImageDelegate> delegate;
 
-+ (instancetype)imageWithSnapshot:(FIRDataSnapshot *)snapshot;
 + (instancetype)imageWithImagePickerReferenceURL:(NSURL *)referenceURL
                                 chapterReference:(FIRDatabaseReference *)chapterReference;
 
-- (NSDictionary *)dictionary;
-- (void)addToDatabase;
 - (void)removeFromDatabase;
 - (void)loadImage;
 

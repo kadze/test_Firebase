@@ -99,7 +99,7 @@ static NSString * const kSAPTitle = @"Metra";
     self.databaseReference = [[FIRDatabase database] reference];
     self.addChapterHandle = [[self.databaseReference child:kSAPChapters] observeEventType:FIRDataEventTypeChildAdded
                                                              withBlock:^(FIRDataSnapshot *snapshot) {
-        [self.chapters addObject:[SAPChapter chapterWithSnapshot:snapshot]];
+        [self.chapters addObject:[SAPChapter modelWithSnapshot:snapshot]];
         [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.chapters.count - 1 inSection:0]]
                           withRowAnimation: UITableViewRowAnimationAutomatic];
                                                              }];

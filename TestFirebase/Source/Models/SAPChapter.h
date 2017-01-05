@@ -8,24 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+#import "SAPModel.h"
+
 @class FIRDataSnapshot;
 @class FIRDatabaseReference;
 @class SAPImage;
 
-@interface SAPChapter : NSObject
+@interface SAPChapter : SAPModel
 @property (nonatomic, readonly) NSInteger imagesCount;
 
 @property (nonatomic, copy, readonly) NSString              *lastImageDate;
 @property (nonatomic, readonly)       NSArray<SAPImage *>   *images;
 
-@property (nonatomic, strong) FIRDatabaseReference *reference;
 @property (nonatomic, copy) NSString *uid;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *chapterDescription;
-
-+ (instancetype)chapterWithSnapshot:(FIRDataSnapshot *)snapshot;
-
-- (NSDictionary *)dictionary;
-- (void)addToDatabase;
 
 @end

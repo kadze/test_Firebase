@@ -10,7 +10,6 @@
 
 #import <Photos/Photos.h>
 #import <FirebaseCore/FirebaseCore.h>
-#import <FirebaseStorage/FirebaseStorage.h>
 #import <FirebaseDatabase/FirebaseDatabase.h>
 
 #import "SAPImage.h"
@@ -33,8 +32,6 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
 @property (nonatomic, assign) FIRDatabaseHandle addImageHandle;
 
 @property (nonatomic, strong) UIBarButtonItem *addImageButton;
-@property (nonatomic, strong) FIRStorageReference *storageReference;
-
 
 @end
 

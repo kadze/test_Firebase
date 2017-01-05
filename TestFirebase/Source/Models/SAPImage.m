@@ -26,13 +26,7 @@ static FIRStorageReference *storageReference = nil;
 @end
 
 @implementation SAPImage
-
-#pragma mark -
-#pragma mark Class Methods
-
-+ (instancetype)imageWithSnapshot:(FIRDataSnapshot *)snapshot {
-    return [[self alloc] initWithSnapshot:snapshot];
-}
+@synthesize reference = _reference;
 
 + (instancetype)imageWithImagePickerReferenceURL:(NSURL *)referenceURL
                                 chapterReference:(FIRDatabaseReference *)chapterReference

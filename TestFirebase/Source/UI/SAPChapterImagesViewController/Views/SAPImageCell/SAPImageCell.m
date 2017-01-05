@@ -51,4 +51,8 @@
     self.dateLabel.text = model.date;
 }
 
+- (void)prepareForReuse {
+    self.imageView.image = nil;
+}
+
 @end

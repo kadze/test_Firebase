@@ -23,19 +23,13 @@
 
 @implementation SAPChapter
 @dynamic images;
-
-#pragma mark -
-#pragma mark Class Methods
-
-+ (instancetype)chapterWithSnapshot:(FIRDataSnapshot *)snapshot {
-    return [[self alloc] initWithSnapshot:snapshot];
-}
+@synthesize reference = _reference;
 
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-     [[self.reference child:kSAPImages] removeObserverWithHandle:self.addImageHandle];
+    [[self.reference child:kSAPImages] removeObserverWithHandle:self.addImageHandle];
     [[self.reference child:kSAPImages] removeObserverWithHandle:self.removeImageHandle];
 }
 
@@ -85,13 +79,13 @@
     self.addImageHandle = [[self.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildAdded
                                                                     withBlock:^(FIRDataSnapshot *snapshot)
                            {
-                               [self.mutableImages addObject:[SAPImage imageWithSnapshot:snapshot]];
+                               [self.mutableImages addObject:[SAPImage modelWithSnapshot:snapshot]];
                            }];
     
     self.removeImageHandle = [[self.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildRemoved
                                                                        withBlock:^(FIRDataSnapshot *snapshot)
                               {
-                                  [self.mutableImages removeObject:[SAPImage imageWithSnapshot:snapshot]];
+                                  [self.mutableImages removeObject:[SAPImage modelWithSnapshot:snapshot]];
                               }];
 }
 
