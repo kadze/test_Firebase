@@ -8,6 +8,8 @@
 
 #import "SAPAppDelegate.h"
 
+#import <Firebase.h>
+
 #import "SAPChaptersViewController.h"
 
 #import "UIWindow+SAPExtensions.h"
@@ -19,12 +21,11 @@
     self.window = window;
     
     SAPChaptersViewController *controller = [SAPChaptersViewController new];
-    
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:controller];
-    
     window.rootViewController = navigationController;
-    
     [window makeKeyAndVisible];
+    
+    [FIRApp configure];
     
     return YES;
 }
