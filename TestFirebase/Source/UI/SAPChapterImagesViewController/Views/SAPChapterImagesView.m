@@ -8,7 +8,17 @@
 
 #import "SAPChapterImagesView.h"
 
+#import "SAPChapterImagesViewModel.h"
+
 @implementation SAPChapterImagesView
 
+#pragma mark -
+#pragma mark Public
+
+- (void)fillWithViewModel:(SAPChapterImagesViewModel *)viewModel {
+    self.imagesCountLabel.text = viewModel.imagesCountLabelText;
+    self.lastImageNameLabel.text = viewModel.lastImageNameLabelText;
+    self.lastImageDateLabel.text = viewModel.lastImageDateLabelText;
+}
 
 @end

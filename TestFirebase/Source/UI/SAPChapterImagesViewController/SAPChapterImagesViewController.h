@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-#import "SAPChapter.h"
-
 #import "SAPImageSelectionMenuViewController.h"
+#import "SAPViewModelDelegate.h"
 
-@interface SAPChapterImagesViewController : UIViewController <SAPImageSelectionMenuViewControllerDelegate>
+@class SAPChapter;
+
+@interface SAPChapterImagesViewController : UIViewController
+<
+    SAPImageSelectionMenuViewControllerDelegate,
+    SAPViewModelDelegate
+>
+
 @property (nonatomic, strong) SAPChapter *chapter;
 
 @end

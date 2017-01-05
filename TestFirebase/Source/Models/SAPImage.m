@@ -115,7 +115,7 @@ static FIRStorageReference *storageReference = nil;
                                        NSURL *imageFile = contentEditingInput.fullSizeImageURL;
                                        NSString *filePath = [NSString stringWithFormat:@"%lld/%@",
                                                              (long long)([[NSDate date] timeIntervalSince1970] * 1000.0),
-                                                             [self.referenceURL lastPathComponent]];
+                                                             [imageFile lastPathComponent]];
                                        [[storageReference child:filePath] putFile:imageFile
                                                                               metadata:nil
                                                                             completion:^(FIRStorageMetadata *metadata, NSError *error)
@@ -126,7 +126,7 @@ static FIRStorageReference *storageReference = nil;
                                                 return;
                                             }
                                             
-                                            self.name = [self.referenceURL lastPathComponent];
+                                            self.name = [imageFile lastPathComponent];
                                             self.imageURL = [storageReference child:metadata.path].description;
                                             
                                             [[[self.chapterReference child:kSAPImages] childByAutoId] setValue:[self dictionary]];

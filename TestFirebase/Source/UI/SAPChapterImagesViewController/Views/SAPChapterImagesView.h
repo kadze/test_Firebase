@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class SAPChapterImagesViewModel;
+
 @interface SAPChapterImagesView : UIView
 @property (nonatomic, strong) IBOutlet UIView *chapterInfoView;
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
@@ -16,5 +18,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *lastTitleLabel;
 @property (nonatomic, strong) IBOutlet UILabel *lastImageNameLabel;
 @property (nonatomic, strong) IBOutlet UILabel *lastImageDateLabel;
+
+- (void)fillWithViewModel:(SAPChapterImagesViewModel *)viewModel;
 
 @end

@@ -9,10 +9,12 @@
 #import "SAPChapterImagesViewController.h"
 
 #import <Photos/Photos.h>
-#import <FirebaseCore/FirebaseCore.h>
-#import <FirebaseDatabase/FirebaseDatabase.h>
+//#import <FirebaseCore/FirebaseCore.h>
+//#import <FirebaseDatabase/FirebaseDatabase.h>
 
+#import "SAPChapterImagesViewModel.h"
 #import "SAPImage.h"
+#import "SAPChapter.h"
 #import "SAPChapterImagesView.h"
 #import "SAPImageCell.h"
 
@@ -25,24 +27,15 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
 <
     UIPopoverPresentationControllerDelegate,
     UINavigationControllerDelegate,
-    UIImagePickerControllerDelegate,
-    UICollectionViewDataSource
+    UIImagePickerControllerDelegate
 >
 
-@property (nonatomic, assign) FIRDatabaseHandle addImageHandle;
-
 @property (nonatomic, strong) UIBarButtonItem *addImageButton;
+@property (nonatomic, strong) SAPChapterImagesViewModel *viewModel;
 
 @end
 
 @implementation SAPChapterImagesViewController
-
-#pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    [[self.chapter.reference child:kSAPImages] removeObserverWithHandle:self.addImageHandle];
-}
 
 #pragma mark -
 #pragma mark View Lifecycle
@@ -54,7 +47,14 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
     
     [self setupNavigationItem];
     [self setupCollectionView];
-    [self setupImageHandles];
+    
+    SAPChapterImagesViewModel *viewModel = [SAPChapterImagesViewModel new];
+    viewModel.chapter = self.chapter;
+    viewModel.delegate = self;
+    viewModel.collectionView = self.mainView.collectionView;
+    self.viewModel = viewModel;
+    
+    [self.mainView fillWithViewModel:viewModel];
 }
 
 #pragma mark -
@@ -87,8 +87,7 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
     
     // if it's a photo from the library, not an image from the camera
     if (referenceURL) {
-        SAPImage *image = [SAPImage imageWithImagePickerReferenceURL:referenceURL chapterReference:self.chapter.reference];
-        [image addToDatabase];
+        [self.viewModel addImageToDatabaseWithReferenceURL:referenceURL];
 
     } else {
 //        UIImage *image = info[UIImagePickerControllerOriginalImage];
@@ -115,18 +114,10 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
 }
 
 #pragma mark -
-#pragma mark UICollectionViewDataSource
+#pragma mark SAPViewModelDelegate
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.chapter.imagesCount;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    SAPImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[SAPImageCell reuseIdentifier]
-                                                                   forIndexPath:indexPath];
-    cell.model = self.chapter.images[indexPath.row];
-    
-    return cell;
+- (void)viewModelDidChange:(id)viewModel {
+    [self.mainView fillWithViewModel:viewModel];
 }
 
 #pragma mark -
@@ -151,20 +142,6 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
     CGFloat itemWidth = (collectionView.bounds.size.width - marginsAndInsets) / cellsPerRow;
     
     flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth);
-}
-
-- (void)setupImageHandles {
-    self.addImageHandle = [[self.chapter.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildAdded
-                                                                    withBlock:^(FIRDataSnapshot *snapshot)
-                           {
-                               [self.mainView.collectionView reloadData];
-                           }];
-    
-    self.addImageHandle = [[self.chapter.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildRemoved
-                                                                            withBlock:^(FIRDataSnapshot *snapshot)
-                           {
-                               [self.mainView.collectionView reloadData];
-                           }];
 }
 
 - (void)onAddImage {

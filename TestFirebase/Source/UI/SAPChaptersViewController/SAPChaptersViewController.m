@@ -8,7 +8,7 @@
 
 #import "SAPChaptersViewController.h"
 
-//#import "SAPChapter.h"
+#import "SAPChapter.h"
 #import "SAPChapterViewController.h"
 #import "SAPChapterCell.h"
 #import "SAPChapterImagesViewController.h"
@@ -63,6 +63,7 @@ static NSString * const kSAPTitle = @"Metra";
     SAPChapterImagesViewController *imagesController = [SAPChapterImagesViewController new];
     imagesController.chapter = [self.viewModel chapterForIndexPath:indexPath];
     [self.navigationController pushViewController:imagesController animated:YES];
+    [tableView deselectRowAtIndexPath:[tableView indexPathForSelectedRow] animated:YES];
 }
 
 #pragma mark -

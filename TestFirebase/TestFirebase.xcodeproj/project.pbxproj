@@ -35,6 +35,7 @@
 		5E4A2EF31E1E76F000401B62 /* SAPModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2EF21E1E76F000401B62 /* SAPModel.m */; };
 		5E4A2EF81E1E7BA400401B62 /* SAPChaptersViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2EF71E1E7BA400401B62 /* SAPChaptersViewModel.m */; };
 		5E4A2F041E1E906700401B62 /* SAPChapterCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2F031E1E906700401B62 /* SAPChapterCellViewModel.m */; };
+		5E4A2F091E1E986400401B62 /* SAPChapterImagesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2F081E1E986400401B62 /* SAPChapterImagesViewModel.m */; };
 		ADA2B0F2641DB720CF7AF0CD /* libPods-TestFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6E7E2A5110C5B151CDB460 /* libPods-TestFirebase.a */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +97,8 @@
 		5E4A2EFB1E1E7D0900401B62 /* SAPViewModelDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPViewModelDelegate.h; sourceTree = "<group>"; };
 		5E4A2F021E1E906700401B62 /* SAPChapterCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPChapterCellViewModel.h; sourceTree = "<group>"; };
 		5E4A2F031E1E906700401B62 /* SAPChapterCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPChapterCellViewModel.m; sourceTree = "<group>"; };
+		5E4A2F071E1E986400401B62 /* SAPChapterImagesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPChapterImagesViewModel.h; sourceTree = "<group>"; };
+		5E4A2F081E1E986400401B62 /* SAPChapterImagesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPChapterImagesViewModel.m; sourceTree = "<group>"; };
 		B2DC07015325CA295AEF1A41 /* Pods-TestFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestFirebase/Pods-TestFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		B36279B8CDC10B41D70FE15E /* Pods-TestFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestFirebase/Pods-TestFirebase.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -316,6 +319,7 @@
 				5E4A2ED01E1D230800401B62 /* SAPChapterImagesViewController.m */,
 				5E4A2ED11E1D230800401B62 /* SAPChapterImagesViewController.xib */,
 				5E4A2ED41E1D241000401B62 /* Views */,
+				5E4A2F051E1E984400401B62 /* ViewModels */,
 			);
 			path = SAPChapterImagesViewController;
 			sourceTree = "<group>";
@@ -392,6 +396,23 @@
 				5E4A2F031E1E906700401B62 /* SAPChapterCellViewModel.m */,
 			);
 			path = SAPChapterCellViewModel;
+			sourceTree = "<group>";
+		};
+		5E4A2F051E1E984400401B62 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5E4A2F061E1E984400401B62 /* SAPChapterImagesViewModel */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5E4A2F061E1E984400401B62 /* SAPChapterImagesViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5E4A2F071E1E986400401B62 /* SAPChapterImagesViewModel.h */,
+				5E4A2F081E1E986400401B62 /* SAPChapterImagesViewModel.m */,
+			);
+			path = SAPChapterImagesViewModel;
 			sourceTree = "<group>";
 		};
 		7CC7FFB3586147296808AD1B /* Frameworks */ = {
@@ -546,6 +567,7 @@
 				5E4A2F041E1E906700401B62 /* SAPChapterCellViewModel.m in Sources */,
 				5E4A2EC41E1CF46F00401B62 /* SAPTableViewCell.m in Sources */,
 				5E4A2EDF1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.m in Sources */,
+				5E4A2F091E1E986400401B62 /* SAPChapterImagesViewModel.m in Sources */,
 				5E4A2EB51E1CEDE000401B62 /* SAPChapterCell.m in Sources */,
 				5E4A2EF31E1E76F000401B62 /* SAPModel.m in Sources */,
 				5E4A2EBA1E1CF43100401B62 /* UINib+SAPExtensions.m in Sources */,

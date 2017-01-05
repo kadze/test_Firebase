@@ -18,6 +18,7 @@
 @property (nonatomic, assign) FIRDatabaseHandle removeImageHandle;
 @property (nonatomic, strong) NSMutableArray<SAPImage *>    *mutableImages;
 @property (nonatomic, copy)   NSString                      *lastImageDate;
+@property (nonatomic, copy)   NSString                      *lastImageName;
 
 @end
 
@@ -82,6 +83,7 @@
                                SAPImage *image = [SAPImage modelWithSnapshot:snapshot];
                                [self.mutableImages addObject:image];
                                self.lastImageDate = image.date;
+                               self.lastImageName = image.name;
                                [self.delegate chapterDidCnahge:self];
                            }];
     
@@ -89,7 +91,9 @@
                                                                        withBlock:^(FIRDataSnapshot *snapshot)
                               {
                                   [self.mutableImages removeObject:[SAPImage modelWithSnapshot:snapshot]];
-                                  self.lastImageDate = self.images.lastObject.date;
+                                  SAPImage *lastImage = self.images.lastObject;
+                                  self.lastImageDate = lastImage.date;
+                                  self.lastImageName = lastImage.name;
                                   [self.delegate chapterDidCnahge:self];
                               }];
 }

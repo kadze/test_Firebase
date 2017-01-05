@@ -25,6 +25,7 @@
 @property (nonatomic, readonly) NSInteger imagesCount;
 
 @property (nonatomic, copy, readonly) NSString              *lastImageDate;
+@property (nonatomic, copy, readonly) NSString              *lastImageName;
 @property (nonatomic, readonly)       NSArray<SAPImage *>   *images;
 
 @property (nonatomic, copy) NSString *uid;

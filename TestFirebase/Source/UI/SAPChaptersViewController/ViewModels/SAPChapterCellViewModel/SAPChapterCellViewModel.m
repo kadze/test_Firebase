@@ -18,7 +18,7 @@
 }
 
 - (NSString *)lastDateLabelText {
-    return self.chapter.lastImageDate;
+    return [NSString stringWithFormat:@"Last: %@", self.chapter.lastImageDate ? :@""];
 }
 
 - (void)setChapter:(SAPChapter *)chapter {
