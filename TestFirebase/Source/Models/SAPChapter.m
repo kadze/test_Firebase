@@ -16,11 +16,12 @@
 @interface SAPChapter ()
 //@property (nonatomic, strong) FIRDatabaseReference *databaseReference;
 @property (nonatomic, assign) FIRDatabaseHandle addImageHandle;
-@property (nonatomic, strong) NSMutableArray<SAPImage *> *images;
+@property (nonatomic, strong) NSMutableArray<SAPImage *> *mutableImages;
 
 @end
 
 @implementation SAPChapter
+@dynamic images;
 
 #pragma mark -
 #pragma mark Class Methods
@@ -42,7 +43,7 @@
         return nil;
     }
     
-    self.images = [NSMutableArray new];
+    self.mutableImages = [NSMutableArray new];
     self.uid = snapshot.key;
     self.reference = snapshot.ref;
     NSDictionary<NSString *, NSString *> *chapterDictionary = snapshot.value;
@@ -52,6 +53,17 @@
     [self setupAddImageHandle];
     
     return self;
+}
+
+#pragma mark -
+#pragma mark Accessors
+
+- (NSArray *)images {
+    return [_mutableImages copy];
+}
+
+- (NSInteger)imagesCount {
+    return _mutableImages.count;
 }
 
 #pragma mark -
@@ -71,7 +83,7 @@
     self.addImageHandle = [[self.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildAdded
                                                                     withBlock:^(FIRDataSnapshot *snapshot)
                            {
-                               [self.images addObject:[SAPImage imageWithSnapshot:snapshot]];
+                               [self.mutableImages addObject:[SAPImage imageWithSnapshot:snapshot]];
                            }];
 }
 

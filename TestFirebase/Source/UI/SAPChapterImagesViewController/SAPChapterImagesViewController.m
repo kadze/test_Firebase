@@ -15,6 +15,7 @@
 
 #import "SAPImage.h"
 #import "SAPChapterImagesView.h"
+#import "SAPImageCell.h"
 
 #import "SAPViewControllerMacro.h"
 #import "SAPConstants.h"
@@ -25,7 +26,8 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
 <
     UIPopoverPresentationControllerDelegate,
     UINavigationControllerDelegate,
-    UIImagePickerControllerDelegate
+    UIImagePickerControllerDelegate,
+    UICollectionViewDataSource
 >
 
 @property (nonatomic, assign) FIRDatabaseHandle addImageHandle;
@@ -54,6 +56,7 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
     self.title = self.chapter.name;
     
     [self setupNavigationItem];
+    [self setupCollectionView];
     [self configureStorage];
     [self setupAddImageHandle];
 }
@@ -138,6 +141,22 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 }
 
 #pragma mark -
+#pragma mark UICollectionViewDataSource
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.chapter.imagesCount;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    SAPImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[SAPImageCell reuseIdentifier]
+                                                                   forIndexPath:indexPath];
+    cell.model = self.chapter.images[indexPath.row];
+    
+    return cell;
+}
+
+
+#pragma mark -
 #pragma mark Private
 
 - (void)setupNavigationItem {
@@ -146,6 +165,19 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                                                                     action:@selector(onAddImage)];
     self.addImageButton = addImageButton;
     self.navigationItem.rightBarButtonItem = addImageButton;
+}
+
+- (void)setupCollectionView {
+    UICollectionView *collectionView = self.mainView.collectionView;
+    [collectionView registerNib:[SAPImageCell nib] forCellWithReuseIdentifier:[SAPImageCell reuseIdentifier]];
+    
+    UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)collectionView.collectionViewLayout;
+    
+    NSInteger cellsPerRow = 2;
+    CGFloat marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + flowLayout.minimumInteritemSpacing * (cellsPerRow - 1);
+    CGFloat itemWidth = (collectionView.bounds.size.width - marginsAndInsets) / cellsPerRow;
+    
+    flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth);
 }
 
 - (void)configureStorage {
@@ -182,5 +214,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
+
 
 @end

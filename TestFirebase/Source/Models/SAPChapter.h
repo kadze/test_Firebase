@@ -10,11 +10,13 @@
 
 @class FIRDataSnapshot;
 @class FIRDatabaseReference;
+@class SAPImage;
 
 @interface SAPChapter : NSObject
 @property (nonatomic, readonly) NSInteger imagesCount;
 
-@property (nonatomic, copy, readonly) NSString *lastImageDate;
+@property (nonatomic, copy, readonly) NSString              *lastImageDate;
+@property (nonatomic, readonly)       NSArray<SAPImage *>   *images;
 
 @property (nonatomic, strong) FIRDatabaseReference *reference;
 @property (nonatomic, copy) NSString *uid;

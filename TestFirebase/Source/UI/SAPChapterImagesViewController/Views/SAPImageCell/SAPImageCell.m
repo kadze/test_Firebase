@@ -32,5 +32,4 @@
     self.dateLabel.text = model.date;
 }
 
-
 @end

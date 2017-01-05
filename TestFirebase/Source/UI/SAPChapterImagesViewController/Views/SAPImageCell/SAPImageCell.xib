@@ -43,6 +43,7 @@
                     </label>
                 </subviews>
             </view>
+            <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="rcd-Vo-FC6" secondAttribute="trailing" id="1l1-Za-vLx"/>
                 <constraint firstItem="rcd-Vo-FC6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3eI-q0-yfg"/>
