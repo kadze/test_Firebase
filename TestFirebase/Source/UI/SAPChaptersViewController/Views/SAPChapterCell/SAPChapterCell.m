@@ -8,21 +8,29 @@
 
 #import "SAPChapterCell.h"
 
-#import "SAPChapter.h"
+#import "SAPChapterCellViewModel.h"
 
 @implementation SAPChapterCell
 
 #pragma mark -
 #pragma mark Accessors
 
-- (void)setModel:(SAPChapter *)model {
-    _model = model;
-    [self fillWithModel];
+- (void)setViewModel:(SAPChapterCellViewModel *)viewModel {
+    _viewModel = viewModel;
+    viewModel.delegate = self;
+    [self fillWithViewModel];
 }
 
-- (void)fillWithModel {
-    self.nameLabel.text = self.model.name;
-//    self.lastDateLabel.text = self.model.lastImageDate.description;/// remake with viewmodel
+- (void)fillWithViewModel {
+    self.nameLabel.text = self.viewModel.nameLabelText;
+    self.lastDateLabel.text = self.viewModel.lastDateLabelText;
+}
+
+#pragma mark -
+#pragma mark SAPViewModelDelegate
+
+- (void)viewModelDidChange:(id)viewModel {
+    [self fillWithViewModel];
 }
 
 @end

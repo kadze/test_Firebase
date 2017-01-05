@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SAPChaptersViewController : UIViewController
+#import "SAPViewModelDelegate.h"
+
+@interface SAPChaptersViewController : UIViewController <SAPViewModelDelegate>
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 @end

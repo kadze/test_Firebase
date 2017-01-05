@@ -14,10 +14,10 @@
 #import "SAPImage.h"
 
 @interface SAPChapter ()
-//@property (nonatomic, strong) FIRDatabaseReference *databaseReference;
 @property (nonatomic, assign) FIRDatabaseHandle addImageHandle;
 @property (nonatomic, assign) FIRDatabaseHandle removeImageHandle;
-@property (nonatomic, strong) NSMutableArray<SAPImage *> *mutableImages;
+@property (nonatomic, strong) NSMutableArray<SAPImage *>    *mutableImages;
+@property (nonatomic, copy)   NSString                      *lastImageDate;
 
 @end
 
@@ -79,13 +79,18 @@
     self.addImageHandle = [[self.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildAdded
                                                                     withBlock:^(FIRDataSnapshot *snapshot)
                            {
-                               [self.mutableImages addObject:[SAPImage modelWithSnapshot:snapshot]];
+                               SAPImage *image = [SAPImage modelWithSnapshot:snapshot];
+                               [self.mutableImages addObject:image];
+                               self.lastImageDate = image.date;
+                               [self.delegate chapterDidCnahge:self];
                            }];
     
     self.removeImageHandle = [[self.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildRemoved
                                                                        withBlock:^(FIRDataSnapshot *snapshot)
                               {
                                   [self.mutableImages removeObject:[SAPImage modelWithSnapshot:snapshot]];
+                                  self.lastImageDate = self.images.lastObject.date;
+                                  [self.delegate chapterDidCnahge:self];
                               }];
 }
 

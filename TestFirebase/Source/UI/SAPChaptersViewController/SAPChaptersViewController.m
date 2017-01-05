@@ -8,64 +8,52 @@
 
 #import "SAPChaptersViewController.h"
 
-#import <FirebaseDatabase/FirebaseDatabase.h>
-
-#import "SAPChapter.h"
+//#import "SAPChapter.h"
 #import "SAPChapterViewController.h"
 #import "SAPChapterCell.h"
 #import "SAPChapterImagesViewController.h"
+#import "SAPChaptersViewModel.h"
 
 #import "SAPConstants.h"
 
 static NSString * const kSAPTitle = @"Metra";
 
 @interface SAPChaptersViewController () <UITableViewDataSource, UITabBarDelegate>
-@property (nonatomic, assign) FIRDatabaseHandle addChapterHandle;
-
-@property (nonatomic, strong) FIRDatabaseReference          *databaseReference;
-@property (nonatomic, strong) NSMutableArray<SAPChapter *>  *chapters;
+@property (nonatomic, strong) SAPChaptersViewModel *viewModel;
 
 @end
 
 @implementation SAPChaptersViewController
 
 #pragma mark -
-#pragma mark Initializations and Deallocations
-
-- (void)dealloc {
-    [[self.databaseReference child:kSAPChapters] removeObserverWithHandle:self.addChapterHandle];
-}
-
-#pragma mark -
 #pragma mark View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.chapters = [NSMutableArray new];
+    
+    SAPChaptersViewModel *viewModel = [SAPChaptersViewModel new];
+    viewModel.delegate = self;
+    viewModel.tableView = self.tableView;
+    self.viewModel = viewModel;
     
     self.title = kSAPTitle;
     [self setupNavigationItem];
     [self setupTableView];
-    
-    [self configureDatabase];
 }
 
 #pragma mark -
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.chapters.count;
+    return [self.viewModel numberOfRowsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SAPChapterCell *cell = [tableView dequeueReusableCellWithIdentifier:[SAPChapterCell reuseIdentifier]];
-    cell.model = self.chapters[indexPath.row];
-    
-    return cell;
+    return [self.viewModel cellForRowAtIndexPath:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 66;
+    return [self.viewModel heightForRowAtIndexPath:indexPath];
 }
 
 #pragma mark -
@@ -73,8 +61,15 @@ static NSString * const kSAPTitle = @"Metra";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     SAPChapterImagesViewController *imagesController = [SAPChapterImagesViewController new];
-    imagesController.chapter = self.chapters[indexPath.row];
+    imagesController.chapter = [self.viewModel chapterForIndexPath:indexPath];
     [self.navigationController pushViewController:imagesController animated:YES];
+}
+
+#pragma mark -
+#pragma mark SAPViewModelDelegate
+
+- (void)viewModelDidChange:(id)viewModel {
+    [self.tableView reloadData];
 }
 
 #pragma mark -
@@ -95,19 +90,11 @@ static NSString * const kSAPTitle = @"Metra";
                                                                                            action:@selector(addChapter)];
 }
 
-- (void)configureDatabase {
-    self.databaseReference = [[FIRDatabase database] reference];
-    self.addChapterHandle = [[self.databaseReference child:kSAPChapters] observeEventType:FIRDataEventTypeChildAdded
-                                                             withBlock:^(FIRDataSnapshot *snapshot) {
-        [self.chapters addObject:[SAPChapter modelWithSnapshot:snapshot]];
-        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.chapters.count - 1 inSection:0]]
-                          withRowAnimation: UITableViewRowAnimationAutomatic];
-                                                             }];
-}
-
 - (void)setupTableView {
     [self.tableView registerNib:[SAPChapterCell nib] forCellReuseIdentifier:[SAPChapterCell reuseIdentifier]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
+
+
 
 @end

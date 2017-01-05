@@ -15,11 +15,8 @@
 #pragma mark Accessors
 
 - (void)setModel:(SAPImage *)model {
-    if (_model != model) {
-        _model = model;
-        
-        [self fillWithModel:model];
-    }
+    _model = model;
+    [self fillWithModel:model];
 }
 
 #pragma mark -

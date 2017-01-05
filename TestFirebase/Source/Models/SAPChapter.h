@@ -14,6 +14,13 @@
 @class FIRDatabaseReference;
 @class SAPImage;
 
+@class SAPChapter;
+
+@protocol SAPChapterDelegate <NSObject>
+- (void)chapterDidCnahge:(SAPChapter *)chapter;
+
+@end
+
 @interface SAPChapter : SAPModel
 @property (nonatomic, readonly) NSInteger imagesCount;
 
@@ -23,5 +30,7 @@
 @property (nonatomic, copy) NSString *uid;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *chapterDescription;
+
+@property (nonatomic, weak) id<SAPChapterDelegate> delegate;
 
 @end

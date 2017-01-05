@@ -10,12 +10,14 @@
 
 #import "SAPTableViewCell.h"
 
-@class SAPChapter;
+#import "SAPViewModelDelegate.h"
 
-@interface SAPChapterCell : SAPTableViewCell
+@class SAPChapterCellViewModel;
+
+@interface SAPChapterCell : SAPTableViewCell <SAPViewModelDelegate>
 @property (nonatomic, strong) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) IBOutlet UILabel *lastDateLabel;
 
-@property (nonatomic, strong) SAPChapter *model;
+@property (nonatomic, strong) SAPChapterCellViewModel *viewModel;
 
 @end

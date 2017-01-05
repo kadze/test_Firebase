@@ -71,6 +71,11 @@ static FIRStorageReference *storageReference = nil;
     self.referenceURL = referenceURL;
     self.chapterReference = chapterReference;
     
+    NSDate *date = [NSDate new];
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"dd.MM.yyyy";
+    self.date = [formatter stringFromDate:date];
+    
     return self;
 }
 
@@ -122,7 +127,6 @@ static FIRStorageReference *storageReference = nil;
                                             }
                                             
                                             self.name = [self.referenceURL lastPathComponent];
-                                            self.date = @"";
                                             self.imageURL = [storageReference child:metadata.path].description;
                                             
                                             [[[self.chapterReference child:kSAPImages] childByAutoId] setValue:[self dictionary]];
