@@ -8,6 +8,21 @@
 
 #import "SAPChapterView.h"
 
+#import "SAPChapter.h"
+
 @implementation SAPChapterView
+
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setModel:(SAPChapter *)model {
+    _model = model;
+    [self fillWitModel];
+}
+
+- (void)fillWitModel {
+    self.nameTextField.text = self.model.name;
+    self.descriptionTextView.text = self.model.chapterDescription;
+}
 
 @end

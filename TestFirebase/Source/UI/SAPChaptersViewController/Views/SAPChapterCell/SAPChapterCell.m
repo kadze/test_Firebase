@@ -33,4 +33,11 @@
     [self fillWithViewModel];
 }
 
+#pragma mark -
+#pragma mark Actions
+
+- (IBAction)onEditButton:(UIButton *)sender {
+    [self.delegate chapterCell:self onEditButton:sender];
+}
+
 @end

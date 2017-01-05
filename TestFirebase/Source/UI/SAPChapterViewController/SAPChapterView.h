@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class SAPChapter;
+
 @interface SAPChapterView : UIView
 @property (nonatomic, strong) IBOutlet UITextField   *nameTextField;
 @property (nonatomic, strong) IBOutlet UITextView    *descriptionTextView;
+
+@property (nonatomic, strong) SAPChapter *model;
 
 @end

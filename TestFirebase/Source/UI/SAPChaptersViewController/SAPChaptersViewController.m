@@ -13,12 +13,13 @@
 #import "SAPChapterCell.h"
 #import "SAPChapterImagesViewController.h"
 #import "SAPChaptersViewModel.h"
+#import "SAPChapterCellViewModel.h"
 
 #import "SAPConstants.h"
 
 static NSString * const kSAPTitle = @"Metra";
 
-@interface SAPChaptersViewController () <UITableViewDataSource, UITabBarDelegate>
+@interface SAPChaptersViewController () <UITableViewDataSource, UITabBarDelegate, SAPChapterCellDelegate>
 @property (nonatomic, strong) SAPChaptersViewModel *viewModel;
 
 @end
@@ -49,7 +50,10 @@ static NSString * const kSAPTitle = @"Metra";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self.viewModel cellForRowAtIndexPath:indexPath];
+    SAPChapterCell *cell = [self.viewModel cellForRowAtIndexPath:indexPath];
+    cell.delegate = self;
+    
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -74,6 +78,15 @@ static NSString * const kSAPTitle = @"Metra";
 }
 
 #pragma mark -
+#pragma mark SAPChapterCellDelegate
+
+- (void)chapterCell:(SAPChapterCell *)cell onEditButton:(UIButton *)button {
+    SAPChapterViewController *chapterController = [SAPChapterViewController new];
+    chapterController.model = cell.viewModel.chapter;
+    [self.navigationController pushViewController:chapterController animated:YES];
+}
+
+#pragma mark -
 #pragma mark Actions
 
 - (void)addChapter {
@@ -95,7 +108,5 @@ static NSString * const kSAPTitle = @"Metra";
     [self.tableView registerNib:[SAPChapterCell nib] forCellReuseIdentifier:[SAPChapterCell reuseIdentifier]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
-
-
 
 @end

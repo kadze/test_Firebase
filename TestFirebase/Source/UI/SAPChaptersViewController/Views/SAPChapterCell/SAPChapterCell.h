@@ -13,11 +13,19 @@
 #import "SAPViewModelDelegate.h"
 
 @class SAPChapterCellViewModel;
+@class SAPChapterCell;
 
+@protocol SAPChapterCellDelegate <NSObject>
+
+- (void)chapterCell:(SAPChapterCell *)cell onEditButton:(UIButton *)button;
+
+@end
 @interface SAPChapterCell : SAPTableViewCell <SAPViewModelDelegate>
 @property (nonatomic, strong) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) IBOutlet UILabel *lastDateLabel;
 
 @property (nonatomic, strong) SAPChapterCellViewModel *viewModel;
+
+@property (nonatomic, weak) id<SAPChapterCellDelegate> delegate;
 
 @end

@@ -56,7 +56,7 @@ static CGFloat const kSAPRowHeight = 66.0;
     return self.chapters.count;
 }
 
-- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (SAPChapterCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SAPChapterCell *cell = [self.tableView dequeueReusableCellWithIdentifier:[SAPChapterCell reuseIdentifier]];
     SAPChapterCellViewModel *viewModel = [SAPChapterCellViewModel new];
     viewModel.chapter = self.chapters[indexPath.row];

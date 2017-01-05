@@ -34,6 +34,7 @@ SAPViewControllerBaseViewProperty(SAPChapterViewController, SAPChapterView, main
     self.title = kSAPTitle;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setupNavigationItem];
+    self.mainView.model = self.model;
 }
 
 #pragma mark -
@@ -46,7 +47,12 @@ SAPViewControllerBaseViewProperty(SAPChapterViewController, SAPChapterView, main
     chapter.chapterDescription = view.descriptionTextView.text;
     
     FIRDatabaseReference *databaseReference = [[FIRDatabase database] reference];
-    [[[databaseReference child:kSAPChapters] childByAutoId] setValue:[chapter dictionary]];
+    
+    if (!chapter.reference) {
+        [[[databaseReference child:kSAPChapters] childByAutoId] setValue:[chapter dictionary]];
+    } else {
+        [chapter.reference setValue:[chapter dictionary]];
+    }
     
     [self.navigationController popViewControllerAnimated:YES];
 }

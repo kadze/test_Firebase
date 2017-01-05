@@ -11,6 +11,7 @@
 #import "SAPViewModelDelegate.h"
 
 @class SAPChapter;
+@class SAPChapterCell;
 
 @interface SAPChaptersViewModel : NSObject
 @property (nonatomic, weak) id<SAPViewModelDelegate> delegate;
@@ -18,7 +19,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 
 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
-- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+- (SAPChapterCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (CGFloat)heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 - (SAPChapter *)chapterForIndexPath:(NSIndexPath *)indexPath;
 
