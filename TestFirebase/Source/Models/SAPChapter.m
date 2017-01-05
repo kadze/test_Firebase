@@ -16,6 +16,7 @@
 @interface SAPChapter ()
 //@property (nonatomic, strong) FIRDatabaseReference *databaseReference;
 @property (nonatomic, assign) FIRDatabaseHandle addImageHandle;
+@property (nonatomic, assign) FIRDatabaseHandle removeImageHandle;
 @property (nonatomic, strong) NSMutableArray<SAPImage *> *mutableImages;
 
 @end
@@ -35,6 +36,7 @@
 
 - (void)dealloc {
      [[self.reference child:kSAPImages] removeObserverWithHandle:self.addImageHandle];
+    [[self.reference child:kSAPImages] removeObserverWithHandle:self.removeImageHandle];
 }
 
 - (instancetype)initWithSnapshot:(FIRDataSnapshot *)snapshot {
@@ -50,7 +52,7 @@
     self.name = chapterDictionary[@"name"];
     self.chapterDescription = chapterDictionary[@"description"];
     
-    [self setupAddImageHandle];
+    [self setupImageHandles];
     
     return self;
 }
@@ -79,12 +81,18 @@
     [[[databaseReference child:kSAPChapters] childByAutoId] setValue:[self dictionary]];
 }
 
-- (void)setupAddImageHandle {
+- (void)setupImageHandles {
     self.addImageHandle = [[self.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildAdded
                                                                     withBlock:^(FIRDataSnapshot *snapshot)
                            {
                                [self.mutableImages addObject:[SAPImage imageWithSnapshot:snapshot]];
                            }];
+    
+    self.removeImageHandle = [[self.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildRemoved
+                                                                       withBlock:^(FIRDataSnapshot *snapshot)
+                              {
+                                  [self.mutableImages removeObject:[SAPImage imageWithSnapshot:snapshot]];
+                              }];
 }
 
 @end

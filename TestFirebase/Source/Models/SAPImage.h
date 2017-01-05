@@ -36,6 +36,7 @@
 
 - (NSDictionary *)dictionary;
 - (void)addToDatabase;
+- (void)removeFromDatabase;
 - (void)loadImage;
 
 @end

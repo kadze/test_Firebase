@@ -191,6 +191,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                            {
                                [self.mainView.collectionView reloadData];
                            }];
+    
+    self.addImageHandle = [[self.chapter.reference child:kSAPImages] observeEventType:FIRDataEventTypeChildRemoved
+                                                                            withBlock:^(FIRDataSnapshot *snapshot)
+                           {
+                               [self.mainView.collectionView reloadData];
+                           }];
 }
 
 - (void)onAddImage {

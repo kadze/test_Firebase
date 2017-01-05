@@ -30,6 +30,13 @@
 }
 
 #pragma mark -
+#pragma makr Actions
+
+- (IBAction)onDeleteButton:(UIButton *)sender {
+    [self.model removeFromDatabase];
+}
+
+#pragma mark -
 #pragma mark Public
 
 - (void)fillWithModel:(SAPImage *)model {

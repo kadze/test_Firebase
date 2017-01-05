@@ -47,6 +47,24 @@
 #pragma mark -
 #pragma mark Public
 
+- (BOOL)isEqual:(id)object {
+    if (self == object) {
+        return YES;
+    }
+    
+    if (![object isKindOfClass:[SAPImage class]]) {
+        return NO;
+    }
+    
+    FIRDatabaseReference *reference = [object reference];
+    if ([_reference.key isEqualToString:reference.key] &&
+        [_reference.parent.key isEqualToString:reference.parent.key]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 - (NSDictionary *)dictionary {
     return @{@"name" : self.name,
              @"date" : self.date,
@@ -55,6 +73,12 @@
 
 - (void)addToDatabase {
     [[[self.chapterReference child:kSAPImages] childByAutoId] setValue:[self dictionary]];
+}
+
+- (void)removeFromDatabase {
+    [[[FIRStorage storage] referenceForURL:self.imageURL] deleteWithCompletion:^(NSError * _Nullable error) {
+        [self.reference removeValue];
+    }];
 }
 
 - (void)loadImage {
