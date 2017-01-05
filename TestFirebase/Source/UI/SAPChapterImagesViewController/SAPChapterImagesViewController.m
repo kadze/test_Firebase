@@ -82,40 +82,18 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
 #pragma mark -
 #pragma mark UIImagePickerControllerDelegate
 
-- (void)imagePickerController:(UIImagePickerController *)picker
-didFinishPickingMediaWithInfo:(NSDictionary *)info
+- (void)    imagePickerController:(UIImagePickerController *)picker
+    didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
     NSURL *referenceURL = info[UIImagePickerControllerReferenceURL];
+    
     // if it's a photo from the library, not an image from the camera
     if (referenceURL) {
-        PHFetchResult* assets = [PHAsset fetchAssetsWithALAssetURLs:@[referenceURL] options:nil];
-        PHAsset *asset = [assets firstObject];
-        [asset requestContentEditingInputWithOptions:nil
-                                   completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
-                                       NSURL *imageFile = contentEditingInput.fullSizeImageURL;
-                                       NSString *filePath = [NSString stringWithFormat:@"%lld/%@",
-                                                             (long long)([[NSDate date] timeIntervalSince1970] * 1000.0),
-                                                             [referenceURL lastPathComponent]];
-                                       [[self.storageReference child:filePath] putFile:imageFile
-                                                                              metadata:nil
-                                                                            completion:^(FIRStorageMetadata *metadata, NSError *error)
-                                       {
-                                           if (error) {
-                                               NSLog(@"Error uploading: %@", error);
-                                               
-                                               return;
-                                           }
-                                           
-                                           SAPImage *image = [SAPImage new];
-                                           image.chapterReference = self.chapter.reference;
-                                           image.name = [referenceURL lastPathComponent];
-                                           image.date = @"";
-                                           image.imageURL = [self.storageReference child:metadata.path].description;
-                                           [image addToDatabase];
-                                       }];
-                                   }];
+        SAPImage *image = [SAPImage imageWithImagePickerReferenceURL:referenceURL chapterReference:self.chapter.reference];
+        [image addToDatabase];
+
     } else {
 //        UIImage *image = info[UIImagePickerControllerOriginalImage];
 //        NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
@@ -220,6 +198,5 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
-
 
 @end

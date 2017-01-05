@@ -33,6 +33,8 @@
 @property (nonatomic, weak) id<SAPImageDelegate> delegate;
 
 + (instancetype)imageWithSnapshot:(FIRDataSnapshot *)snapshot;
++ (instancetype)imageWithImagePickerReferenceURL:(NSURL *)referenceURL
+                                chapterReference:(FIRDatabaseReference *)chapterReference;
 
 - (NSDictionary *)dictionary;
 - (void)addToDatabase;

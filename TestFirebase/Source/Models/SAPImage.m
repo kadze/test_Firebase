@@ -11,8 +11,16 @@
 #import <UIKit/UIImage.h>
 #import <FirebaseDatabase/FirebaseDatabase.h>
 #import <FirebaseStorage/FirebaseStorage.h>
+#import <FirebaseCore/FirebaseCore.h>
+#import <Photos/Photos.h>
 
 #import "SAPConstants.h"
+
+@interface SAPImage ()
+@property (nonatomic, strong) NSURL                 *referenceURL;
+//@property (nonatomic, strong) FIRStorageReference   *storageReference;
+
+@end
 
 @implementation SAPImage
 
@@ -21,6 +29,12 @@
 
 + (instancetype)imageWithSnapshot:(FIRDataSnapshot *)snapshot {
     return [[self alloc] initWithSnapshot:snapshot];
+}
+
++ (instancetype)imageWithImagePickerReferenceURL:(NSURL *)referenceURL
+                                chapterReference:(FIRDatabaseReference *)chapterReference
+{
+    return [[self alloc] initWithImagePickerReferenceURL:referenceURL chapterReference:chapterReference];
 }
 
 #pragma mark -
@@ -40,6 +54,24 @@
     self.date = dictionary[@"date"];
     self.imageURL = dictionary[@"imageURL"];
     
+    
+    return self;
+}
+
+- (instancetype)initWithImagePickerReferenceURL:(NSURL *)referenceURL
+                                chapterReference:(FIRDatabaseReference *)chapterReference
+{
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    if (!referenceURL) {
+        return nil;
+    }
+    
+    self.referenceURL = referenceURL;
+    self.chapterReference = chapterReference;
     
     return self;
 }
@@ -72,7 +104,36 @@
 }
 
 - (void)addToDatabase {
-    [[[self.chapterReference child:kSAPImages] childByAutoId] setValue:[self dictionary]];
+    if (self.referenceURL) {
+        NSString *storageUrl = [FIRApp defaultApp].options.storageBucket;
+        FIRStorageReference *storageReference = [[FIRStorage storage] referenceForURL:[NSString stringWithFormat:@"gs://%@", storageUrl]];
+        
+        PHFetchResult* assets = [PHAsset fetchAssetsWithALAssetURLs:@[self.referenceURL] options:nil];
+        PHAsset *asset = [assets firstObject];
+        [asset requestContentEditingInputWithOptions:nil
+                                   completionHandler:^(PHContentEditingInput *contentEditingInput, NSDictionary *info) {
+                                       NSURL *imageFile = contentEditingInput.fullSizeImageURL;
+                                       NSString *filePath = [NSString stringWithFormat:@"%lld/%@",
+                                                             (long long)([[NSDate date] timeIntervalSince1970] * 1000.0),
+                                                             [self.referenceURL lastPathComponent]];
+                                       [[storageReference child:filePath] putFile:imageFile
+                                                                              metadata:nil
+                                                                            completion:^(FIRStorageMetadata *metadata, NSError *error)
+                                        {
+                                            if (error) {
+                                                NSLog(@"Error uploading: %@", error);
+                                                
+                                                return;
+                                            }
+                                            
+                                            self.name = [self.referenceURL lastPathComponent];
+                                            self.date = @"";
+                                            self.imageURL = [storageReference child:metadata.path].description;
+                                            
+                                            [[[self.chapterReference child:kSAPImages] childByAutoId] setValue:[self dictionary]];
+                                        }];
+                                   }];
+    }
 }
 
 - (void)removeFromDatabase {
@@ -104,5 +165,10 @@
         }
     }
 }
+
+//- (void)configureStorage {
+//    NSString *storageUrl = [FIRApp defaultApp].options.storageBucket;
+//    self.storageReference = [[FIRStorage storage] referenceForURL:[NSString stringWithFormat:@"gs://%@", storageUrl]];
+//}
 
 @end
