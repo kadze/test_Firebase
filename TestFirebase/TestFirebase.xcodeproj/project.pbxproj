@@ -29,6 +29,9 @@
 		5E4A2EDF1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2EDD1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.m */; };
 		5E4A2EE01E1D2EA000401B62 /* SAPImageSelectionMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E4A2EDE1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.xib */; };
 		5E4A2EE31E1D6E5B00401B62 /* SAPImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2EE21E1D6E5B00401B62 /* SAPImage.m */; };
+		5E4A2EE81E1E2ECD00401B62 /* SAPCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2EE61E1E2ECD00401B62 /* SAPCollectionViewCell.m */; };
+		5E4A2EEE1E1E30CF00401B62 /* SAPImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2EEC1E1E30CF00401B62 /* SAPImageCell.m */; };
+		5E4A2EEF1E1E30CF00401B62 /* SAPImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E4A2EED1E1E30CF00401B62 /* SAPImageCell.xib */; };
 		ADA2B0F2641DB720CF7AF0CD /* libPods-TestFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D6E7E2A5110C5B151CDB460 /* libPods-TestFirebase.a */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +81,11 @@
 		5E4A2EDE1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPImageSelectionMenuViewController.xib; sourceTree = "<group>"; };
 		5E4A2EE11E1D6E5B00401B62 /* SAPImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPImage.h; sourceTree = "<group>"; };
 		5E4A2EE21E1D6E5B00401B62 /* SAPImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPImage.m; sourceTree = "<group>"; };
+		5E4A2EE51E1E2ECD00401B62 /* SAPCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPCollectionViewCell.h; sourceTree = "<group>"; };
+		5E4A2EE61E1E2ECD00401B62 /* SAPCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPCollectionViewCell.m; sourceTree = "<group>"; };
+		5E4A2EEB1E1E30CF00401B62 /* SAPImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SAPImageCell.h; sourceTree = "<group>"; };
+		5E4A2EEC1E1E30CF00401B62 /* SAPImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAPImageCell.m; sourceTree = "<group>"; };
+		5E4A2EED1E1E30CF00401B62 /* SAPImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SAPImageCell.xib; sourceTree = "<group>"; };
 		B2DC07015325CA295AEF1A41 /* Pods-TestFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestFirebase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TestFirebase/Pods-TestFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		B36279B8CDC10B41D70FE15E /* Pods-TestFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestFirebase.release.xcconfig"; path = "Pods/Target Support Files/Pods-TestFirebase/Pods-TestFirebase.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -260,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				5E4A2EC11E1CF46F00401B62 /* SAPTableViewCell */,
+				5E4A2EE41E1E2EB300401B62 /* SAPCollectionViewCell */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -302,6 +311,7 @@
 			children = (
 				5E4A2ED51E1D242300401B62 /* SAPChapterImagesView.h */,
 				5E4A2ED61E1D242300401B62 /* SAPChapterImagesView.m */,
+				5E4A2EEA1E1E309A00401B62 /* SAPImageCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,6 +324,25 @@
 				5E4A2EDE1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.xib */,
 			);
 			path = SAPImageSelectionMenuViewController;
+			sourceTree = "<group>";
+		};
+		5E4A2EE41E1E2EB300401B62 /* SAPCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5E4A2EE51E1E2ECD00401B62 /* SAPCollectionViewCell.h */,
+				5E4A2EE61E1E2ECD00401B62 /* SAPCollectionViewCell.m */,
+			);
+			path = SAPCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		5E4A2EEA1E1E309A00401B62 /* SAPImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				5E4A2EEB1E1E30CF00401B62 /* SAPImageCell.h */,
+				5E4A2EEC1E1E30CF00401B62 /* SAPImageCell.m */,
+				5E4A2EED1E1E30CF00401B62 /* SAPImageCell.xib */,
+			);
+			path = SAPImageCell;
 			sourceTree = "<group>";
 		};
 		7CC7FFB3586147296808AD1B /* Frameworks */ = {
@@ -390,6 +419,7 @@
 				5E4A2EE01E1D2EA000401B62 /* SAPImageSelectionMenuViewController.xib in Resources */,
 				5E4A2ED31E1D230800401B62 /* SAPChapterImagesViewController.xib in Resources */,
 				5E2360291E1BCF4800C68F86 /* LaunchScreen.storyboard in Resources */,
+				5E4A2EEF1E1E30CF00401B62 /* SAPImageCell.xib in Resources */,
 				5E2360461E1BDC5200C68F86 /* GoogleService-Info.plist in Resources */,
 				5E2360441E1BD3DE00C68F86 /* SAPChaptersViewController.xib in Resources */,
 				5E4A2EB61E1CEDE000401B62 /* SAPChapterCell.xib in Resources */,
@@ -452,6 +482,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4A2EEE1E1E30CF00401B62 /* SAPImageCell.m in Sources */,
 				5E4A2EE31E1D6E5B00401B62 /* SAPImage.m in Sources */,
 				5E2360391E1BD26200C68F86 /* UIWindow+SAPExtensions.m in Sources */,
 				5E4A2EAF1E1CD8F400401B62 /* SAPChapterView.m in Sources */,
@@ -461,6 +492,7 @@
 				5E4A2ED71E1D242300401B62 /* SAPChapterImagesView.m in Sources */,
 				5E4A2EAC1E1CD2D500401B62 /* SAPChapter.m in Sources */,
 				5E4A2ED21E1D230800401B62 /* SAPChapterImagesViewController.m in Sources */,
+				5E4A2EE81E1E2ECD00401B62 /* SAPCollectionViewCell.m in Sources */,
 				5E4A2EC41E1CF46F00401B62 /* SAPTableViewCell.m in Sources */,
 				5E4A2EDF1E1D2EA000401B62 /* SAPImageSelectionMenuViewController.m in Sources */,
 				5E4A2EB51E1CEDE000401B62 /* SAPChapterCell.m in Sources */,
