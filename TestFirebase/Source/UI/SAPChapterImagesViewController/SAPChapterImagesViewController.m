@@ -57,7 +57,6 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
     
     [self setupNavigationItem];
     [self setupCollectionView];
-    [self configureStorage];
     [self setupAddImageHandle];
 }
 
@@ -133,7 +132,6 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
     return cell;
 }
 
-
 #pragma mark -
 #pragma mark Private
 
@@ -156,11 +154,6 @@ SAPViewControllerBaseViewProperty(SAPChapterImagesViewController, SAPChapterImag
     CGFloat itemWidth = (collectionView.bounds.size.width - marginsAndInsets) / cellsPerRow;
     
     flowLayout.itemSize = CGSizeMake(itemWidth, itemWidth);
-}
-
-- (void)configureStorage {
-    NSString *storageUrl = [FIRApp defaultApp].options.storageBucket;
-    self.storageReference = [[FIRStorage storage] referenceForURL:[NSString stringWithFormat:@"gs://%@", storageUrl]];
 }
 
 - (void)setupAddImageHandle {

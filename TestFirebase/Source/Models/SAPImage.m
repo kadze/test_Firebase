@@ -15,6 +15,9 @@
 #import <Photos/Photos.h>
 
 #import "SAPConstants.h"
+#import "SAPDispatchOnceMacro.h"
+
+static FIRStorageReference *storageReference = nil;
 
 @interface SAPImage ()
 @property (nonatomic, strong) NSURL                 *referenceURL;
@@ -70,6 +73,7 @@
         return nil;
     }
     
+    [self configureStorage];
     self.referenceURL = referenceURL;
     self.chapterReference = chapterReference;
     
@@ -105,9 +109,6 @@
 
 - (void)addToDatabase {
     if (self.referenceURL) {
-        NSString *storageUrl = [FIRApp defaultApp].options.storageBucket;
-        FIRStorageReference *storageReference = [[FIRStorage storage] referenceForURL:[NSString stringWithFormat:@"gs://%@", storageUrl]];
-        
         PHFetchResult* assets = [PHAsset fetchAssetsWithALAssetURLs:@[self.referenceURL] options:nil];
         PHAsset *asset = [assets firstObject];
         [asset requestContentEditingInputWithOptions:nil
@@ -166,9 +167,14 @@
     }
 }
 
-//- (void)configureStorage {
-//    NSString *storageUrl = [FIRApp defaultApp].options.storageBucket;
-//    self.storageReference = [[FIRStorage storage] referenceForURL:[NSString stringWithFormat:@"gs://%@", storageUrl]];
-//}
+#pragma mark -
+#pragma mark Private
+
+- (void)configureStorage {
+    SAPDispatchOnce((^{
+        NSString *storageUrl = [FIRApp defaultApp].options.storageBucket;
+        storageReference = [[FIRStorage storage] referenceForURL:[NSString stringWithFormat:@"gs://%@", storageUrl]];
+    }));
+}
 
 @end
