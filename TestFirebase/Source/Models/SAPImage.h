@@ -12,19 +12,30 @@
 @class FIRDatabaseReference;
 @class UIImage;
 
+@class SAPImage;
+
+@protocol SAPImageDelegate <NSObject>
+
+- (void)delegatingSAPImage:(SAPImage *)delegatingObject imageDidLoad:(UIImage *)image;
+
+@end
+
 @interface SAPImage : NSObject
 
-@property (nonatomic, strong) FIRDatabaseReference *reference;
-@property (nonatomic, strong) FIRDatabaseReference *chapterReference;
-@property (nonatomic, copy) NSString *uid;
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *date;
-@property (nonatomic, copy) NSString *imageURL;
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) FIRDatabaseReference  *reference;
+@property (nonatomic, strong) FIRDatabaseReference  *chapterReference;
+@property (nonatomic, copy) NSString                *uid;
+@property (nonatomic, copy) NSString                *name;
+@property (nonatomic, copy) NSString                *date;
+@property (nonatomic, copy) NSString                *imageURL;
+@property (nonatomic, strong) UIImage               *image;
+
+@property (nonatomic, weak) id<SAPImageDelegate> delegate;
 
 + (instancetype)imageWithSnapshot:(FIRDataSnapshot *)snapshot;
 
 - (NSDictionary *)dictionary;
 - (void)addToDatabase;
+- (void)loadImage;
 
 @end

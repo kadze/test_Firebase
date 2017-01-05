@@ -7,10 +7,9 @@
 //
 
 #import "SAPCollectionViewCell.h"
+#import "SAPImage.h"
 
-@class SAPImage;
-
-@interface SAPImageCell : SAPCollectionViewCell
+@interface SAPImageCell : SAPCollectionViewCell <SAPImageDelegate>
 @property (nonatomic, strong) IBOutlet UIImageView  *imageView;
 @property (nonatomic, strong) IBOutlet UILabel      *nameLabel;
 @property (nonatomic, strong) IBOutlet UILabel      *dateLabel;

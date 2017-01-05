@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 
 #import "SAPImageCell.h"
-#import "SAPImage.h"
 
 @implementation SAPImageCell
 
@@ -24,10 +23,23 @@
 }
 
 #pragma mark -
-#pragma mark SAPModelView
+#pragma mark SAPImageDelegate
+
+- (void)delegatingSAPImage:(SAPImage *)delegatingObject imageDidLoad:(UIImage *)image {
+    self.imageView.image = image;
+}
+
+#pragma mark -
+#pragma mark Public
 
 - (void)fillWithModel:(SAPImage *)model {
-    self.imageView.image = model.image;
+    model.delegate = self;
+    if (model.image) {
+        self.imageView.image = model.image;
+    } else {
+        [model loadImage];
+    }
+    
     self.nameLabel.text = model.name;
     self.dateLabel.text = model.date;
 }

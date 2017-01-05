@@ -10,6 +10,7 @@
 
 #import <UIKit/UIImage.h>
 #import <FirebaseDatabase/FirebaseDatabase.h>
+#import <FirebaseStorage/FirebaseStorage.h>
 
 #import "SAPConstants.h"
 
@@ -39,6 +40,7 @@
     self.date = dictionary[@"date"];
     self.imageURL = dictionary[@"imageURL"];
     
+    
     return self;
 }
 
@@ -53,6 +55,30 @@
 
 - (void)addToDatabase {
     [[[self.chapterReference child:kSAPImages] childByAutoId] setValue:[self dictionary]];
+}
+
+- (void)loadImage {
+    NSString *imageURL = _imageURL;
+    if (imageURL) {
+        if ([imageURL hasPrefix:@"gs://"]) {
+            [[[FIRStorage storage] referenceForURL:imageURL] dataWithMaxSize:INT64_MAX
+                                                                  completion:^(NSData *data, NSError *error)
+             {
+                 if (error) {
+                     NSLog(@"Error downloading: %@", error);
+                     return;
+                 }
+                 
+                 UIImage *image = [UIImage imageWithData:data];
+                 self.image = image;
+                 [self.delegate delegatingSAPImage:self imageDidLoad:image];
+             }];
+        } else {
+            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]]];
+            self.image = image;
+            [self.delegate delegatingSAPImage:self imageDidLoad:image];
+        }
+    }
 }
 
 @end
